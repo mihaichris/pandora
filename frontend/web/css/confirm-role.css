@@ -1,0 +1,21 @@
+#pills{
+    padding-top: 20em;
+}
+/* 
+#miner{
+    font-size: 10em;
+}
+
+#investitor{
+    font-size: 10em;
+
+} */
+
+body{
+    background: linear-gradient(60deg,#3A1C71,#D76D77,#FFAF7B)
+
+}
+
+.text-bold {
+    font-weight: bold;
+}

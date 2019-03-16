@@ -1,0 +1,18 @@
+.container{
+    padding-top: 3em;
+}
+.card .card-header-primary{
+    background: linear-gradient(60deg,#ab47bc,#7b1fa2);
+}
+.card-title{
+    font-weight: 700;
+    color:white
+}
+#register-form-captcha-image{
+    width:150px;    }
+
+body{
+    background: linear-gradient(60deg,#834d9b,#d04ed6)
+
+}    
+

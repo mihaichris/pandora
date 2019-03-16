@@ -1,0 +1,14 @@
+.container{
+    padding-top: 10em;
+}
+.card .card-header-primary{
+    background: linear-gradient(60deg,#67C3C7,#37B9E9)
+}
+.card-title{
+    font-weight: 700;
+    color:white
+}
+body{
+    background: linear-gradient(60deg,#2193b0,#6dd5ed)
+
+}
