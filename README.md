@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="frontend/web/img/logo.png" height="100px">
+    <img src="frontend/web/img/logo.png" height="300px">
     <h1 align="center">Pandora Web Exchange</h1>
     <br>
 </p>
