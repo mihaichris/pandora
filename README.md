@@ -4,6 +4,6 @@
     <br>
 </p>
 
-<p> O aplicatie exchange dezvoltata in PHP care functioneaza ca API Client pentru reteaua Pandora. </p>
+<p> Un exchange dezvoltat in PHP care functioneaza ca API Client pentru reteaua Pandora. </p>
 
 
