@@ -128,3 +128,4 @@ $("#confirm-transaction-button").click(function () {
     }
   });
 });
+

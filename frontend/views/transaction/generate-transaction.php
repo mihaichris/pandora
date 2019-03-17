@@ -64,15 +64,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="col-md-4 text-center">
-            <?= Html::button("<i class='material-icons' style='font-size:4em'>credit_card</i>",
-                    ["class"=>"btn btn-info bmd-btn-fab" ,
-                    "id"=>"generate-transaction-button", 
-                    //"data-toggle"=>"tooltip", 
-                    //"data-placement"=>"right", 
-                    //"title"=>"Genereaza o tranzacție nou.",
-                    "data-target"=>"#confirm-transaction-modal",
-                    //"disabled"=> isset(Yii::$app->request->post("receiver_address")),
-                    "data-toggle"=>"modal"])?>               
+            <span data-toggle="modal" data-target="#confirm-transaction-modal">
+                <?= Html::button("<i class='material-icons' style='font-size:4em'>credit_card</i>",
+                        ["class"=>"btn btn-info bmd-btn-fab" ,
+                        "id"=>"generate-transaction-button",
+                        "data-toggle"    => "tooltip",
+                        "data-placement" => "right",
+                        "title"          => "Genereaza o noua tranzactie.",
+                        //"disabled"=> isset(Yii::$app->request->post("receiver_address")),
+                        ])?>
+            </span>
             <div class="card card-stats rounded">
                 <div class="card-header" data-background-color="blue">
                     <i class="material-icons">work</i>
