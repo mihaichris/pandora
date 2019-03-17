@@ -89,7 +89,7 @@ class Blockchain():
         self.node_address = "Pandora Blockchain"
         self.init_data()
        
-    # Sincronizarea nodului curent cu intreaga retea
+    # Sincronizarea nodului curent cu datele din baza de date
     def init_data(self):
         db = connector.connect(host="localhost",user="root",passwd="",database="blockchain_db")
 
