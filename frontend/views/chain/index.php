@@ -173,5 +173,5 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 </div>
 <?php $this->registerJsFile(
     '@web/frontend/web/js/chain.js',
-    ['depends' => [\yii\web\JqueryAsset::className()]]
+    ['depends' => [\yii\web\JqueryAsset::class]]
 );?>

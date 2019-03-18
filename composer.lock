@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03da75d33b1150dc584f828a6fd14251",
+    "content-hash": "1095497f5dc7500b879723a03deb299a",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -317,16 +317,16 @@
         },
         {
             "name": "bpampuch/pdfmake",
-            "version": "0.1.53",
+            "version": "0.1.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpampuch/pdfmake.git",
-                "reference": "ede17761858d1870575ad60c12d7f3ce0d3ef550"
+                "reference": "b80b78904d9542459c45d2d1ab142e6eb009a39b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/ede17761858d1870575ad60c12d7f3ce0d3ef550",
-                "reference": "ede17761858d1870575ad60c12d7f3ce0d3ef550",
+                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/b80b78904d9542459c45d2d1ab142e6eb009a39b",
+                "reference": "b80b78904d9542459c45d2d1ab142e6eb009a39b",
                 "shasum": ""
             },
             "type": "library",
@@ -349,7 +349,7 @@
                 "pdf",
                 "pdfmake"
             ],
-            "time": "2019-02-17T14:49:14+00:00"
+            "time": "2019-03-17T07:15:53+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -7665,7 +7665,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=7.1.14"
     },
     "platform-dev": []
 }

@@ -108,11 +108,11 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <?php $this->registerCssFile("@web/frontend/web/css/wallet.css",[
-    'depends' => [\yii\bootstrap\BootstrapAsset::className()],
+    'depends' => [\yii\bootstrap\BootstrapAsset::class],
 ]);?>
 
 
 <?php $this->registerJsFile(
     '@web/frontend/web/js/wallet.js',
-    ['depends' => [\yii\web\JqueryAsset::className()]]
+    ['depends' => [\yii\web\JqueryAsset::class]]
 );?>

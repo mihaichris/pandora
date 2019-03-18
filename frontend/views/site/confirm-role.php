@@ -43,4 +43,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>    
 </div>
 
-<?php $this->registerCssFile('@web/frontend/web/css/confirm-role.css',['depends' => [\yii\bootstrap\BootstrapAsset::className()]])?>
+<?php $this->registerCssFile('@web/frontend/web/css/confirm-role.css',['depends' => [\yii\bootstrap\BootstrapAsset::class]])?>

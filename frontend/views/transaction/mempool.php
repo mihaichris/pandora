@@ -113,5 +113,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $this->registerJsFile(
     '@web/frontend/web/js/mempool.js',
-    ['depends' => [\yii\web\JqueryAsset::className()]]
+    ['depends' => [\yii\web\JqueryAsset::class]]
 );?>
