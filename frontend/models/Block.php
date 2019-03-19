@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $timestamp
- * @property string $previous_hasha
+ * @property string $previous_hash
  * @property int $miner_id
  * @property double $fees
  * @property string $proof_of_work
@@ -38,7 +38,7 @@ class Block extends \yii\db\ActiveRecord
             [['miner_id', 'proof_of_work'], 'integer'],
             [['fees'], 'number'],
             [['previous_hash'], 'string', 'max' => 200],
-            [['miner_id'], 'exist', 'skipOnError' => true, 'targetClass' => Miner::className(), 'targetAttribute' => ['miner_id' => 'user_id']],
+            [['miner_id'], 'exist', 'skipOnError' => true, 'targetClass' => Miner::class, 'targetAttribute' => ['miner_id' => 'user_id']],
         ];
     }
 
@@ -62,7 +62,7 @@ class Block extends \yii\db\ActiveRecord
      */
     public function getMiner()
     {
-        return $this->hasOne(Miner::className(), ['user_id' => 'miner_id']);
+        return $this->hasOne(Miner::class, ['user_id' => 'miner_id']);
     }
 
     /**
@@ -70,7 +70,7 @@ class Block extends \yii\db\ActiveRecord
      */
     public function getHash()
     {
-        return $this->hasOne(Hash::className(), ['block_id' => 'id']);
+        return $this->hasOne(Hash::class, ['block_id' => 'id']);
     }
 
     /**
@@ -78,6 +78,6 @@ class Block extends \yii\db\ActiveRecord
      */
     public function getTransactions()
     {
-        return $this->hasMany(Transaction::className(), ['block_id' => 'id']);
+        return $this->hasMany(Transaction::class, ['block_id' => 'id']);
     }
 }

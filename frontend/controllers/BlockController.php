@@ -51,16 +51,19 @@ class BlockController extends \yii\web\Controller
                 Mempool::deleteAll();
                 $mineBlockResponse = Yii::$app->pandora->getHttpClient()->get('/block/mine_block')->send();
 
-                foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node)
-                {
-                    $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
-                    array_push($requests, $client->get('nodes/replace_chain'));
-                }
+
                 // Inlocuieste toate nodurile din retea
-                $replaceChainsResponse = $client->batchSend($requests);
+
 
                 if ($mineBlockResponse->isOk)
                 {
+                    foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node)
+                    {
+                        $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
+                        array_push($requests,$client->get('nodes/replace_chain'));
+                    }
+
+                    $replaceChainsResponse = $client->batchSend($requests);
                     $blockResponse = $mineBlockResponse->data;
 
                     $block->timestamp     = $blockResponse['timestamp'];

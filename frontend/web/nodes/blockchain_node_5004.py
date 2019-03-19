@@ -47,7 +47,7 @@ Nodes:
 # 2. Generez un portofel nou pentru utilizatorul retelei  
 
 import os
-import datetime
+from datetime import datetime
 import hashlib 
 import json
 import Crypto
@@ -77,16 +77,16 @@ class Blockchain():
         self.chain = []
         self.transactions = []
         self.chain_hashes = []
-
-        genesis_block = self.create_block(proof = 1, previous_hash = '0')
-        block_hash = self.proof_of_work(genesis_block)
-        
-        self.chain_hashes.append(block_hash[0])
         self.nodes = set()
         self.receiver = ''
         self.port = self.get_node_port()
-        # self.node_address = str(uuid4()).replace('=','')
         self.node_address = "Pandora Blockchain"
+
+        genesis_block = self.create_block(proof = 1, previous_hash = '0')
+        block_hash = self.proof_of_work(genesis_block)
+
+        self.chain_hashes.append(block_hash[0])
+
         self.init_data()
        
     # Sincronizarea nodului curent cu intreaga retea
@@ -103,23 +103,24 @@ class Blockchain():
 
     def init_receiver(self,db):
         receiver_cursor = db.cursor()
-        receiver_cursor.execute("SELECT user.username FROM node INNER JOIN user ON node.user_id=user.id WHERE node_address='127.0.0.1:{0}'".format(self.port)) 
+        receiver_cursor.execute("SELECT user.username,user.created_at FROM node INNER JOIN user ON node.user_id=user.id WHERE node_address='127.0.0.1:{0}'".format(self.port)) 
         receiver_result = receiver_cursor.fetchone()
         self.receiver = receiver_result[0]
+        self.chain[0]['timestamp'] = datetime.utcfromtimestamp(receiver_result[1]).strftime('%Y-%m-%d %H:%M:%S')
 
     def init_chain_from_db(self,db):
         block_cursor = db.cursor()
-        block_cursor.execute("SELECT block.id, block.timestamp, block.proof_of_work, block.previous_hash,hash.hash,miner.username  FROM block INNER JOIN hash ON hash.block_id = block.id INNER JOIN user as miner ON  block.miner_id=miner.id")
+        block_cursor.execute("SELECT block.id, block.timestamp, block.proof_of_work, block.previous_hash,hash.hash,miner.username, miner.created_at  FROM block INNER JOIN hash ON hash.block_id = block.id INNER JOIN user as miner ON  block.miner_id=miner.id")
         block_result = block_cursor.fetchall()
 
         if len(block_result) > 0:
-            #self.chain["hashes"][0] = block_result[0][3]
+            self.chain[0]['timestamp'] = datetime.utcfromtimestamp(block_result[0][6]).strftime('%Y-%m-%d %H:%M:%S')
             self.chain_hashes[0] = block_result[0][3]
 
             for block in block_result:
                 self.chain_hashes.append(block[4])
                 block_data  = {
-                    "index": block[0]+1,
+                    "index": block[0] + 1,
                     "timestamp": str(block[1]),
                     "proof": block[2],
                     "previous_hash": block[3]
@@ -143,10 +144,11 @@ class Blockchain():
                     transactions_total = transactions_total + amount
                     transaction_list.append(transaction_data)
                 transaction_reward = {
-                    "amount": transactions_total * 0.1,
+                    "amount": round(transactions_total * 0.1,1),
                     "receiver":block[5],
                     "sender":self.node_address
                 }
+
                 transaction_list.append(transaction_reward)
                 block_data['transactions'] = transaction_list
                 self.chain.append(block_data)
@@ -172,7 +174,7 @@ class Blockchain():
     def create_block(self,proof,previous_hash):
         block = {
                     'index' : len(self.chain) + 1,
-                    'timestamp' : str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")),
+                    'timestamp' : str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")),
                     'proof' : proof,
                     'previous_hash' : previous_hash,
                     'transactions': self.transactions,
@@ -382,7 +384,7 @@ def mine_block():
     for transaction in blockchain.transactions:
         transactions_total = transactions_total + transaction['amount']
 
-    blockchain.add_transaction(sender = blockchain.node_address, receiver = blockchain.receiver, amount = transactions_total * 0.1 ,signature = '')
+    blockchain.add_transaction(sender = blockchain.node_address, receiver = blockchain.receiver, amount = round(transactions_total * 0.1,1) ,signature = '')
     previous_hash = hash_operation[0] # Iau hash-ul ultimului block 
     proof = hash_operation[1] # Iau dovada block-ului pe care il  minez
     block = blockchain.create_block(proof, previous_hash)
