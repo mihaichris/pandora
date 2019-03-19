@@ -4,8 +4,6 @@ use frontend\models\Transaction;
 use frontend\models\Wallet;
 use yii\helpers\Html;
 use dosamigos\chartjs\ChartJs;
-use frontend\models\Investor;
-use frontend\models\Miner;
 
 /* @var $this yii\web\View */
 

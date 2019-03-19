@@ -1,17 +1,11 @@
 <?php
-
-use yii\widgets\Pjax;
-use kartik\export\ExportMenu;
-use kartik\grid\GridView;
 use yii\helpers\Html;
-use common\components\Helper;
 
 /* @var $searchModel frontend\models\search\TransactionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tranzacții în așteptare';
 $this->params['breadcrumbs'][] = $this->title;
-//  Helper::debug(\Yii::$app->cache);
 ?>
 
     <div class="container-fluid">
@@ -75,8 +69,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= $transaction['receiver'] ?></td>
                                     <td><?= $transaction['amount'] . "  <i  style='font-size:1em 'class='material-icons'>euro_symbol</i>" ?> </td>
                                     <td><?= date_format(date_create($transaction['created_at']), 'd, F Y H:i') ?></td>
-                                    <td><?= Html::button("<i class='fa fa-eye'></i>", ['class' => 'btn  btn-sm btn-simple btn-warning', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Informații despre tranzacție', 'onclick' => 'mempoolDetails(' . $transaction['id'] . ')']) ?></td>
                                     <td> <?= ($transaction['amount'] * 0.1) ?> </td>
+                                    <td><?= Html::button("<i class='fa fa-eye'></i>", ['class' => 'btn  btn-sm btn-simple btn-warning', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Informații despre tranzacție', 'onclick' => 'mempoolDetails(' . $transaction['id'] . ')']) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
