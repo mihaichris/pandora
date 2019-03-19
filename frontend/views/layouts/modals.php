@@ -43,7 +43,7 @@ use kartik\number\NumberControl;
 						</div>
 						<div class="col-md-6">
 							<?= Html::beginTag('div',['class'=>"form-group"]);?>
-								<?= Html::label('Numele destinatarului',['class'=>'form-label'])?>
+								<?= Html::label('Numele destinătorului',['class'=>'form-label'])?>
 								<div class='input-group'>
 									<span class='input-group-addon'>
 										<i class='material-icons'>face</i>

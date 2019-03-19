@@ -63,12 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-header" data-background-color="orange">
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                    <span class="nav-tabs-title">Cheile tale:</span>
+                    <span class="nav-tabs-title">Cheile mele:</span>
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="active">
                             <a href="#card_public-key" data-toggle="tab">
                                 <i class="material-icons">cloud</i>
-                                Cheie Publica
+                                Cheie Publică
                             <div class="ripple-container"></div></a>
                         </li>
                         <li class="">
@@ -81,11 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <li  data-toggle="tooltip" data-placement="top" title="Adaugă bani in contul tau!">
                             <a href="#"  data-target="#add-money" data-toggle="modal">
                                 <i class="material-icons">monetization_on</i>
-                                Alimentează contul tău
+                                Adaugă fonduri
                             <div class="ripple-container"></div></a>
                         </li>
                         <?php endif;?> 
-                        <li class="pull-right" data-toggle="tooltip" data-placement="top" title="Cheia publica va fi de asemenea folosita ca si adresa proprie pentru efectuarea de tranzactii cu alti participanti la retea.">
+                        <li class="pull-right" data-toggle="tooltip" data-placement="top" title="Cheia publică va fi de asemenea folosită ca și adresa proprie pentru efectuarea de tranzacții cu alți participanți la rețea.">
                             <a href="#">
                                 <i class="material-icons">info</i>
                             <div class="ripple-container"></div></a>

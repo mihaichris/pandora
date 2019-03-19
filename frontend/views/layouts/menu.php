@@ -31,8 +31,8 @@ use common\components\Helper;
                         'options' => ['class' => 'nav'],
                         'items' => [
                             ['label' => Yii::$app->user->identity->username,'icon'=>'person','url'=>'#', 'items' => [
-                                ['label' => 'Profil', 'url' => ['/user/profile']],
-                                ['label' => 'Editeaza profil', 'url' => ['/user/settings/profile']],
+                                ['label' => 'Profilul meu', 'url' => ['/user/profile']],
+                                ['label' => 'Editează profilul', 'url' => ['/user/settings/profile']],
                             ]],
                         ],
                         
@@ -46,21 +46,19 @@ use common\components\Helper;
             [
                 'options' => ['class' => 'nav'],
                 'items' => [
-                    // Important: you need to specify url as 'controller/action',
-                    // not just as 'controller' even if default action is used.
-                    ['label' => 'Dashboard','options'=>['class'=>'active'],'icon'=>'dashboard', 'url' => ['/site/index']],
-                    ['label' => 'Portofel','options'=>['class'=>'active'],'icon'=>'account_balance_wallet', 'url' => ['/wallet/index']],
-                    ['label' => 'Lanțul tău','options'=>['class'=>'active'],'icon'=>'timeline', 'url' => ['/chain/index']],
+                    ['label' => 'Tablou de bord','options'=>['class'=>'active'],'icon'=>'dashboard', 'url' => ['/site/index']],
+                    ['label' => 'ePortofel','options'=>['class'=>'active'],'icon'=>'account_balance_wallet', 'url' => ['/wallet/index']],
+                    ['label' => 'Lanțul meu','options'=>['class'=>'active'],'icon'=>'timeline', 'url' => ['/chain/index']],
                     ['label' => 'Minare', 'icon'=>'security' ,'url'=>['/block/mine-block'], 'visible'=> Yii::$app->user->can('Miner') ],                    
-                    ['label' => 'Tranzacții', 'icon'=>'credit_card' ,'url'=>['#'], 'items' => [
+                    ['label' => 'Tranzacționează', 'icon'=>'credit_card' ,'url'=>['#'], 'items' => [
                         ['label' => 'Generare tranzactie', 'icon'=>'work','url' => ['/transaction/generate-transaction']],
                         ['label' => 'Istoric tranzacții', 'icon'=>'list_alt' ,'url' => ['/transaction/index']],
-                        ['label' => 'Tranzacții in asteptare', 'icon'=>'hourglass_empty' ,'url' => ['/transaction/mempool']],
+                        ['label' => 'Ordinele mele', 'icon'=>'hourglass_empty' ,'url' => ['/transaction/mempool']],
                     ]],
                     ['label' => 'Documentație Hashing','options'=>['class'=>'active'],'icon'=>'code', 'url' => ['/hash/index']],
                     ['label' => 'Noduri conectate','options'=>['class'=>'active'],'icon'=>'device_hub', 'url' => ['/node/index']],
                     // 'Products' menu item will be selected as long as the route is 'product/index'
-                    ['label' => 'Users', 'url'=>['#'], 'visible' => \Yii::$app->user->can('Admin'),'items' => [
+                    ['label' => 'Utilizatori', 'url'=>['#'], 'visible' => \Yii::$app->user->can('Admin'),'items' => [
                         ['label' => 'Listare utilizatori', 'url' => ['/user/admin/index']],
                     ]],
                     ['label' => 'RBAC',  'visible' => \Yii::$app->user->can('Admin'),'url'=>['#'], 'items' => [
