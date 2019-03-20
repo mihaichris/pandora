@@ -131,16 +131,16 @@
         },
         {
             "name": "bower-asset/chartjs",
-            "version": "v2.7.3",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chartjs/Chart.js.git",
-                "reference": "924a66bae23f7e938531024951f7251d46785473"
+                "reference": "947d8a7ccfbfc76dd9d384ea75436fa4a7aeefb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/924a66bae23f7e938531024951f7251d46785473",
-                "reference": "924a66bae23f7e938531024951f7251d46785473",
+                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/947d8a7ccfbfc76dd9d384ea75436fa4a7aeefb1",
+                "reference": "947d8a7ccfbfc76dd9d384ea75436fa4a7aeefb1",
                 "shasum": null
             },
             "type": "bower-asset",
