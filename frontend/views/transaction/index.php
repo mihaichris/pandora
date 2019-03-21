@@ -8,7 +8,6 @@ use yii\widgets\Pjax;
 
 $this->title                   = 'Istoric tranzacții';
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="transaction-index">
 <?=ExportMenu::widget([

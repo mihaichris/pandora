@@ -157,8 +157,8 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
       <?php endforeach;?>
     </div>
     <div class="row">
-        <div class="col-md-2 text-center">
-                <i class="material-icons" style="font-size:1.5em">date_range</i> <span style="font-size:1.5em"><?=date_format(new \DateTime($block['timestamp']), 'Y-m-d H:i:s')?></span>
+        <div class="col-md-4 text-center">
+                <i class="material-icons" style="font-size:1.5em">date_range</i> <span style="font-size:1.5em">Minat la data de: <?=date_format(new \DateTime($block['timestamp']), 'Y-m-d H:i:s')?></span>
         </div>
     </div>
     <div class="row text-center">

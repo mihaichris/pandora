@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Block */
 
-$this->title = "Block Nr." .  $model->id;
+$this->title = "Block Nr." .  ($model->id + 1);
 $this->params['breadcrumbs'][] = ['label' => 'Blocks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
