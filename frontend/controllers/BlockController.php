@@ -126,7 +126,7 @@ class BlockController extends \yii\web\Controller
             ->innerJoin('hash', 'hash.block_id=block.id')
             ->where(['block.id' => $id])
             ->all();
-        Helper::debug($queryBlockInfo);
+
         return $this->render('view-block', [
             'model'          => $this->findModel($id),
             'queryBlockInfo' => $queryBlockInfo,
