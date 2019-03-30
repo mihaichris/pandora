@@ -49,7 +49,7 @@ use common\components\Helper;
                     ['label' => 'Tablou de bord','options'=>['class'=>'active'],'icon'=>'dashboard', 'url' => ['/site/index']],
                     ['label' => 'ePortofel','options'=>['class'=>'active'],'icon'=>'account_balance_wallet', 'url' => ['/wallet/index']],
                     ['label' => 'Lanțul meu','options'=>['class'=>'active'],'icon'=>'timeline', 'url' => ['/chain/index']],
-                    ['label' => 'Minare', 'icon'=>'security' ,'url'=>['/block/mine-block'], 'visible'=> Yii::$app->user->can('Miner') ],                    
+                    ['label' => 'Minează', 'icon'=>'security' ,'url'=>['/block/mine-block'], 'visible'=> Yii::$app->user->can('Miner') ],
                     ['label' => 'Tranzacționează', 'icon'=>'credit_card' ,'url'=>['#'], 'items' => [
                         ['label' => 'Generare tranzactie', 'icon'=>'work','url' => ['/transaction/generate-transaction']],
                         ['label' => 'Istoric tranzacții', 'icon'=>'list_alt' ,'url' => ['/transaction/index']],

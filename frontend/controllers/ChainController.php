@@ -4,9 +4,28 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\db\Query;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class ChainController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+
+                'rules' => [
+                    [
+                        'actions' => ['index','check-chain-validation'],
+                        'allow'   => true,
+                        'roles'   => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         try {
@@ -51,4 +70,22 @@ class ChainController extends \yii\web\Controller
         //Helper::debug($queryChainInfo);
         return $this->render('index', ['genesisBlock' => $genesisBlock]);
     }
+
+    public function actionCheckChainValidation()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $checkChain = Yii::$app->pandora->getHttpClient()->get('chain/is_valid')->send();
+        if($checkChain->isOk)
+        {
+            if($checkChain->data['message']  == 'Reteaua este valida.' )
+            {
+                \Yii::$app->response->data = ['message' => 'Rețeaua este validă','code'=>"success"];
+            }
+            else
+            {
+                \Yii::$app->response->data = ['message' => 'Rețeaua nu este validă','code'=>"error"];
+            }
+        }
+    }
+
 }

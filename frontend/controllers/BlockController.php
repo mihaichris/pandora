@@ -10,6 +10,8 @@ use frontend\models\Transaction;
 use frontend\models\Wallet;
 use Yii;
 use yii\db\Query;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\httpclient\Client;
 
 class BlockController extends \yii\web\Controller

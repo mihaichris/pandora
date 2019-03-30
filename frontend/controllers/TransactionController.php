@@ -31,29 +31,12 @@ class TransactionController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only'  => ['logout', 'signup', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
-                        'allow'   => true,
-                        'roles'   => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['generate-transaction', 'index','mempool'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],
-                    [
-                        'actions' => ['captcha'],
-                        'allow'   => true,
-                    ],
-                ],
-            ],
-            'verbs'  => [
-                'class'   => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
-                    'delete' => ['POST'],
                 ],
             ],
         ];

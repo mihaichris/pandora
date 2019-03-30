@@ -1,35 +1,33 @@
-$("#sync_chain-button").click(function () {
+
+$(document).ready(function(){
+    'use strict'
+    checkChain();
+});
+
+function checkChain() {
+    $('#chain-valid-message').hide();
     $.ajax({
-      url: "sync-chain",
-      type: "POST",
-      dataType: 'json',
-      success: function (response) {
-        console.log(response);
-        if (response.type == "success") {
-            $.notify({
-                icon: 'check',
-                message: response.message
-            }, {
-                // settings
-                type: response.type
-            });
-            $("#chain-blocks").load(" #chain-blocks");
-        } else {
-            $.notify({
-                icon: 'error',
-                message: response.message
-            }, {
-                // settings
-                type: response.type
-            });
+        url: "check-chain-validation",
+        type: "GET",
+        dataType: 'json',
+        success: function (response) {
+            // $('#loader').hide();
+            $('#chain-valid-message').show();
+            if(response.code === 'success')
+            {
+                $('#chain-valid-message').text(response.message);
+                $('#icon-chain-valid-message').html("<i class='material-icons text-success'>check_circle</i>");
+            }
+            else
+            {
+                $('#chain-valid-message').text(response.message);
+                $('#icon-chain-valid-message').html("<i class ='material-icons text-danger'>report_problem</i>");
+            }
+        },
+
+        error: function (error) {
+            console.log('A aparut o eroare de la client!');
+
         }
-    },
-      
-      error: function (error) {
-        console.log('A aparut o eroare de la client!')
-  
-      }
     });
-  
-  
-  });
+}

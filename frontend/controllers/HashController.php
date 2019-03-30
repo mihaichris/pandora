@@ -18,30 +18,15 @@ class HashController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only'  => ['logout', 'signup', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
-                        'allow'   => true,
-                        'roles'   => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['index'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],
-                    [
-                        'actions' => ['captcha'],
-                        'allow'   => true,
-                    ],
                 ],
             ],
-            'verbs'  => [
-                'class'   => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+
         ];
     }
 

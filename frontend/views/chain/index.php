@@ -12,7 +12,13 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 <div id = "chain-blocks">
 <?php if (!empty($genesisBlock)): ?>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <h4 id ="chain-valid-message" class="description"></h4><span id="icon-chain-valid-message"></span>
+        </div>
+    </div>
 <div class="card card-raised rounded">
+
     <div class="card-content">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 text-center">
@@ -171,7 +177,11 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 <?php endif;?>
 </div>
 </div>
+
 <?php $this->registerJsFile(
     '@web/frontend/web/js/chain.js',
     ['depends' => [\yii\web\JqueryAsset::class]]
 );?>
+
+<?php $this->registerCssFile('@web/frontend/web/css/chain.css',
+    ['depends' => [\yii\bootstrap\BootstrapAsset::class]])?>
