@@ -11,7 +11,7 @@ function checkChain() {
         type: "GET",
         dataType: 'json',
         success: function (response) {
-            // $('#loader').hide();
+            $('#loader-row').hide();
             $('#chain-valid-message').show();
             if(response.code === 'success')
             {

@@ -33,7 +33,7 @@ class TransactionController extends \yii\web\Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['generate-transaction', 'index','mempool'],
+                        'actions' => ['generate-transaction', 'index','mempool-details','view','change-receiver','confirm-transaction','sign-transaction'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],

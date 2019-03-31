@@ -12,6 +12,11 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 <div id = "chain-blocks">
 <?php if (!empty($genesisBlock)): ?>
 <div class="container-fluid">
+    <div class="row" id="loader-row">
+        <h4 class="description text-center">Se verifică rețeaua ta dacă este validă...</h4>
+        <div class="col-md-6 text-center" style="margin-left: -60px;"></div>
+        <div class="col-md-6"><div id="loader"></div></div>
+    </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
             <h4 id ="chain-valid-message" class="description"></h4><span id="icon-chain-valid-message"></span>

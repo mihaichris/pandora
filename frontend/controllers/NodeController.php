@@ -25,7 +25,7 @@ class NodeController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','view','merge-nodes','remove-node','add-node'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],

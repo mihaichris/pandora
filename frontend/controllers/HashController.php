@@ -20,7 +20,7 @@ class HashController extends \yii\web\Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','hash-message'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],

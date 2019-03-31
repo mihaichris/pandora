@@ -23,7 +23,7 @@ class WalletController extends \yii\web\Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','add-balance','generate-wallet'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],
@@ -43,6 +43,7 @@ class WalletController extends \yii\web\Controller
         }
         if ($model->load(Yii::$app->request->post()))
         {
+            $setReceiverResponse    = Yii::$app->pandora->getHttpClient()->post('user/set_receiver', ['receiver' => Yii::$app->request->post('public_address')])->send();
             $model->user_id    = Yii::$app->user->identity->id;
             $model->created_at = $time->format('Y-m-d H:i:s');
 
@@ -88,10 +89,7 @@ class WalletController extends \yii\web\Controller
     public function actionGenerateWallet()
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
         $generateWalletResponse = Yii::$app->pandora->getHttpClient()->get('wallet/new_wallet')->send();
-        $setReceiverResponse    = Yii::$app->pandora->getHttpClient()->post('user/set_receiver', ['receiver' => $generateWalletResponse->data['public_key']])->send();
-
         \Yii::$app->response->data = $generateWalletResponse->data;
     }
 

@@ -16,6 +16,24 @@ use yii\httpclient\Client;
 
 class BlockController extends \yii\web\Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+
+                'rules' => [
+                    [
+                        'actions' => ['index','mine-block','view-block'],
+                        'allow'   => true,
+                        'roles'   => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

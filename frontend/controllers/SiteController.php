@@ -213,12 +213,12 @@ class SiteController extends Controller
                 'datasets' => [
                     [
                         'label' => "Blocuri minate",
-                        'backgroundColor' => "rgba(179,181,198,0.2)",
-                        'borderColor' => "rgba(179,181,198,1)",
-                        'pointBackgroundColor' => "rgba(179,181,198,1)",
+                        'backgroundColor' => "rgba(0,0,255)",
+                        'borderColor' => "rgba(0,0,255)",
+                        'pointBackgroundColor' => "rgba(0,0,255)",
                         'pointBorderColor' => "#fff",
                         'pointHoverBackgroundColor' => "#fff",
-                        'pointHoverBorderColor' => "rgba(179,181,198,1)",
+                        'pointHoverBorderColor' => "rgba(0,0,255)",
                         'data' => $blocksNumberChartValues,
                     ],
                 ],
@@ -246,7 +246,7 @@ class SiteController extends Controller
             array_push($transactionChartValues, $transaction ? $transaction : 0);
         }
 
-//        Helper::debug($data);
+//        Helper::debug($transactionChartLabels);
         $transactionsConfirmedPerDayChart = [
             'type' => 'bar',
 
@@ -259,12 +259,12 @@ class SiteController extends Controller
                 'datasets' => [
                     [
                         'label' => "Tranzacții confirmate",
-                        'backgroundColor' => "rgba(179,181,198,0.2)",
-                        'borderColor' => "rgba(179,181,198,1)",
-                        'pointBackgroundColor' => "rgba(179,181,198,1)",
+                        'backgroundColor' => "rgba(128,0,128)",
+                        'borderColor' => "rgba(128,0,128)",
+                        'pointBackgroundColor' => "rgba(128,0,128)",
                         'pointBorderColor' => "#fff",
                         'pointHoverBackgroundColor' => "#fff",
-                        'pointHoverBorderColor' => "rgba(179,181,198,1)",
+                        'pointHoverBorderColor' => "rgba(128,0,128)",
                         'data' => $transactionChartValues,
                     ],
                 ],
