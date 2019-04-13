@@ -6,7 +6,6 @@ use DateTime;
 use frontend\models\Wallet;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use common\components\Helper;
 
 class WalletController extends \yii\web\Controller

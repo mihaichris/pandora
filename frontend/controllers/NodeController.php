@@ -5,7 +5,6 @@ use frontend\models\Node;
 use frontend\models\search\NodeSearch;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

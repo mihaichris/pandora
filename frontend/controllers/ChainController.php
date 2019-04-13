@@ -3,9 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\db\Query;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 class ChainController extends \yii\web\Controller
 {
@@ -17,9 +15,9 @@ class ChainController extends \yii\web\Controller
 
                 'rules' => [
                     [
-                        'actions' => ['index','check-chain-validation'],
-                        'allow'   => true,
-                        'roles'   => ['@'],
+                        'actions' => ['index', 'check-chain-validation'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -31,9 +29,7 @@ class ChainController extends \yii\web\Controller
         try {
             $genesisBlock = Yii::$app->pandora->getHttpClient()->get('chain/get_chain')->send()->data;
 
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             Yii::$app->session->setFlash('error', ' Ai grijă ca rețeaua ta să fie pornită !');
             $genesisBlock = [];
         }
@@ -75,15 +71,11 @@ class ChainController extends \yii\web\Controller
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $checkChain = Yii::$app->pandora->getHttpClient()->get('chain/is_valid')->send();
-        if($checkChain->isOk)
-        {
-            if($checkChain->data['message']  == 'Reteaua este valida.' )
-            {
-                \Yii::$app->response->data = ['message' => 'Rețeaua este validă','code'=>"success"];
-            }
-            else
-            {
-                \Yii::$app->response->data = ['message' => 'Rețeaua nu este validă','code'=>"error"];
+        if ($checkChain->isOk) {
+            if ($checkChain->data['message'] == 'Reteaua este valida.') {
+                \Yii::$app->response->data = ['message' => 'Rețeaua este validă', 'code' => "success"];
+            } else {
+                \Yii::$app->response->data = ['message' => 'Rețeaua nu este validă', 'code' => "error"];
             }
         }
     }

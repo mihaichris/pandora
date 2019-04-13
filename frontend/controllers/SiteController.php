@@ -16,14 +16,12 @@ use frontend\models\SignupForm;
 use frontend\models\Transaction;
 use Yii;
 use Yii\base\Exception;
-use yii\base\InvalidParamException;
 use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use common\components\Helper;
-use yii\helpers\Json;
 
 /**
  * Site controller
@@ -83,9 +81,8 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return mixed
+     * @return string
+     * @throws \Exception
      */
     public function actionIndex()
     {

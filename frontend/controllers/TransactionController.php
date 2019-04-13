@@ -12,7 +12,6 @@ use kartik\export\ExportMenu;
 use Yii;
 use yii\db\Query;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use yii\httpclient\Client;
 use common\components\Helper;
@@ -33,7 +32,7 @@ class TransactionController extends \yii\web\Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['generate-transaction', 'index','mempool-details','view','change-receiver','confirm-transaction','sign-transaction'],
+                        'actions' => ['generate-transaction', 'index','mempool','mempool-details','view','change-receiver','confirm-transaction','sign-transaction'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],

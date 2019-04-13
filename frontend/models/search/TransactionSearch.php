@@ -56,12 +56,12 @@ class TransactionSearch extends Transaction
             'query' => $query,
         ]);
 
-        $dataProvider->sort->attributes['sender'] = [
+        $dataProvider->sort->attributes['sender_profile'] = [
             'asc' => ['sender_profile.name' => SORT_ASC],
             'desc' => ['sender_profile.name' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['receiver'] = [
+        $dataProvider->sort->attributes['receiver_profile'] = [
             'asc' => ['receiver_profile.name' => SORT_ASC],
             'desc' => ['receiver_profile.name' => SORT_DESC],
         ];

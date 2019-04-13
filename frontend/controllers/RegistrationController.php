@@ -3,18 +3,8 @@
 namespace frontend\controllers;
 
 use dektrium\user\controllers\RegistrationController as BaseRegistrationController;
-
-use Yii;
-use dektrium\user\Finder;
 use dektrium\user\models\RegistrationForm;
-use dektrium\user\models\ResendForm;
-use dektrium\user\models\User;
-use dektrium\user\traits\AjaxValidationTrait;
-use dektrium\user\traits\EventTrait;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\helpers\Url;
 
 
 class RegistrationController extends BaseRegistrationController
@@ -23,7 +13,6 @@ class RegistrationController extends BaseRegistrationController
      * Displays the registration page.
      * After successful registration if enableConfirmation is enabled shows info message otherwise
      * redirects to home page.
-     *
      * @return string
      * @throws \yii\web\HttpException
      */
@@ -33,14 +22,14 @@ class RegistrationController extends BaseRegistrationController
             throw new NotFoundHttpException();
         }
 
-        /** 
-         * @var RegistrationForm $model 
+        /**
+         * @var RegistrationForm $model
          */
         $model = \Yii::createObject(RegistrationForm::class);
         $event = $this->getFormEvent($model);
 
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
-        
+
         $this->performAjaxValidation($model);
         if ($model->load(\Yii::$app->request->post()) && $model->register()) {
             $this->trigger(self::EVENT_AFTER_REGISTER, $event);
@@ -48,11 +37,11 @@ class RegistrationController extends BaseRegistrationController
             //     'title'  => \Yii::t('user', 'Your account has been created and a message with further instructions has been sent to your email'),
             //     'module' => $this->module,
             // ]);
-            return $this->redirect(['/site/confirm-role','username'=> $model->username]);
+            return $this->redirect(['/site/confirm-role', 'username' => $model->username]);
         }
 
         return $this->render('register', [
-            'model'  => $model,
+            'model' => $model,
             'module' => $this->module,
         ]);
     }

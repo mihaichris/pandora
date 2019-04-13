@@ -10,7 +10,7 @@ use common\models\KeyStorageItem;
 /**
  * Class KeyStorageController.
  */
-class KeyStorageController extends \yii\web\Controller
+class KeyStorageController extends Controller
 {
     public function behaviors()
     {

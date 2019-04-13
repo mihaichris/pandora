@@ -4,7 +4,6 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 class HashController extends \yii\web\Controller
 {
