@@ -4625,7 +4625,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.25",
+            "version": "v3.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -6946,7 +6946,7 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
@@ -7003,7 +7003,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -7143,7 +7143,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -7196,7 +7196,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -7253,7 +7253,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -7317,7 +7317,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7366,7 +7366,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
