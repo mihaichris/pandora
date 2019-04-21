@@ -94,6 +94,7 @@ class BlockController extends \yii\web\Controller
 
                     if ($block->save())
                     {
+                        // Ofer rasplata minerului pentru minarea blocurilor
                         $minersWallet->balance = $minersWallet->balance + $block->fees;
                         $minersWallet->save();
 
@@ -101,7 +102,7 @@ class BlockController extends \yii\web\Controller
                         $hash->hash     = $blockResponse['hash'];
                         $hash->save();
 
-                        // Trimti banii la toti cei care erau senderi si nu au primit inca banii tranzactiei
+                        // Trimti banii la toti cei care erau receiveri si nu au primit inca banii tranzactiei
                         foreach (Transaction::find()->where(['status' => '0'])->each() as $transaction)
                         {
                             $receiverWallet          = Wallet::findOne(['user_id' => $transaction->receiver_id]);
