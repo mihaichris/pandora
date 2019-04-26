@@ -15,14 +15,15 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\Transaction;
 use Yii;
-use Yii\base\Exception;
+use \Exception as Exception;
 use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use common\components\Helper;
-
+use yii\web\JsExpression;
+use \InvalidArgumentException as InvalidArgumentException;
 /**
  * Site controller
  */
@@ -88,7 +89,6 @@ class SiteController extends Controller
     {
         $getUsersQuery = [];
         $getChainResponse = [];
-        $getNodesResponse = [];
         try {
             $getChainResponse = (Yii::$app->pandora->getHttpClient()->get('/chain/get_chain')->send())->data;
             $getNodesResponse = Yii::$app->pandora->getHttpClient()->get('nodes/get_nodes')->send();
@@ -155,7 +155,7 @@ class SiteController extends Controller
                     'maintainAspectRatio' => false,
 
                     'plugins' =>
-                        new \yii\web\JsExpression("
+                        new JsExpression("
                 [{
                     afterDatasetsDraw: function(chart, easing) {
                         var ctx = chart.ctx;
@@ -239,7 +239,7 @@ class SiteController extends Controller
 
         foreach ($currentMonthDates as $date) {
             $transaction = Transaction::find()->where('MONTH(valid_at)=MONTH(NOW())')->andWhere(['DATE(valid_at)' => $date])->count();
-            array_push($transactionChartLabels, date_format(new \DateTime($date), 'd F, Y'));
+            array_push($transactionChartLabels, date_format(new DateTime($date), 'd F, Y'));
             array_push($transactionChartValues, $transaction ? $transaction : 0);
         }
 
@@ -410,7 +410,7 @@ class SiteController extends Controller
     {
         try {
             $model = new ResetPasswordForm($token);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 

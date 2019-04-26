@@ -4,8 +4,11 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\web\Controller;
+use \Exception as Exception;
+use yii\web\Response;
 
-class ChainController extends \yii\web\Controller
+class ChainController extends Controller
 {
     public function behaviors()
     {
@@ -29,7 +32,7 @@ class ChainController extends \yii\web\Controller
         try {
             $genesisBlock = Yii::$app->pandora->getHttpClient()->get('chain/get_chain')->send()->data;
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Yii::$app->session->setFlash('error', ' Ai grijă ca rețeaua ta să fie pornită !');
             $genesisBlock = [];
         }
@@ -69,13 +72,13 @@ class ChainController extends \yii\web\Controller
 
     public function actionCheckChainValidation()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $checkChain = Yii::$app->pandora->getHttpClient()->get('chain/is_valid')->send();
         if ($checkChain->isOk) {
             if ($checkChain->data['message'] == 'Reteaua este valida.') {
-                \Yii::$app->response->data = ['message' => 'Rețeaua este validă', 'code' => "success"];
+                Yii::$app->response->data = ['message' => 'Rețeaua este validă', 'code' => "success"];
             } else {
-                \Yii::$app->response->data = ['message' => 'Rețeaua nu este validă', 'code' => "error"];
+                Yii::$app->response->data = ['message' => 'Rețeaua nu este validă', 'code' => "error"];
             }
         }
     }

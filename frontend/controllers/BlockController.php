@@ -11,10 +11,12 @@ use frontend\models\Wallet;
 use Yii;
 use yii\db\Query;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
+use \DateTime as DateTime;
 use yii\httpclient\Client;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
-class BlockController extends \yii\web\Controller
+class BlockController extends Controller
 {
 
     public function behaviors()
@@ -25,9 +27,9 @@ class BlockController extends \yii\web\Controller
 
                 'rules' => [
                     [
-                        'actions' => ['index','mine-block','view-block'],
-                        'allow'   => true,
-                        'roles'   => ['@'],
+                        'actions' => ['index', 'mine-block', 'view-block'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -41,7 +43,7 @@ class BlockController extends \yii\web\Controller
 
     public function actionMineBlock()
     {
-        $getMyAddress            = Wallet::findOne(['user_id' => Yii::$app->user->identity->id]);
+//        $getMyAddress = Wallet::findOne(['user_id' => Yii::$app->user->identity->id]);
         $mempoolTransactionQuery = (new Query())
             ->select(['mempool.id', 'sender.name sender', 'receiver.name receiver', 'mempool.amount amount', 'mempool.created_at created_at'])
             ->from('mempool')
@@ -55,19 +57,15 @@ class BlockController extends \yii\web\Controller
             // ->orWhere(['mempool.receiver_address' => $getMyAddress->public_address])
             ->all();
         $lastBlock = Block::find('timestamp')->where(['miner_id' => Yii::$app->user->identity->id])->orderBy(['timestamp' => SORT_DESC])->one();
-        if (Yii::$app->request->post())
-        {
-            $block        = new Block();
-            $time         = new \DateTime();
-            $hash         = new Hash();
-            $requests     = [];
+        if (Yii::$app->request->post()) {
+            $block = new Block();
+            $time = new DateTime();
+            $hash = new Hash();
+            $requests = [];
             $minersWallet = Wallet::findOne(['user_id' => Yii::$app->user->identity->id]);
-            if (empty(Mempool::find()->asArray()->all()))
-            {
+            if (empty(Mempool::find()->asArray()->all())) {
                 Yii::$app->session->setFlash('error', ' Nu sunt tranzacții de validat');
-            }
-            else
-            {
+            } else {
                 Mempool::deleteAll();
                 $mineBlockResponse = Yii::$app->pandora->getHttpClient()->get('/block/mine_block')->send();
 
@@ -75,37 +73,33 @@ class BlockController extends \yii\web\Controller
                 // Inlocuieste toate nodurile din retea
 
 
-                if ($mineBlockResponse->isOk)
-                {
-                    foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node)
-                    {
+                if ($mineBlockResponse->isOk) {
+                    foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node) {
                         $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
-                        array_push($requests,$client->get('nodes/replace_chain'));
+                        array_push($requests, $client->get('nodes/replace_chain'));
                     }
 
                     $replaceChainsResponse = $client->batchSend($requests);
                     $blockResponse = $mineBlockResponse->data;
 
-                    $block->timestamp     = $blockResponse['timestamp'];
+                    $block->timestamp = $blockResponse['timestamp'];
                     $block->previous_hash = $blockResponse['previous_hash'];
-                    $block->miner_id      = Yii::$app->user->identity->id;
-                    $block->fees          = end($blockResponse['transactions'])['amount'];
+                    $block->miner_id = Yii::$app->user->identity->id;
+                    $block->fees = end($blockResponse['transactions'])['amount'];
                     $block->proof_of_work = $blockResponse['proof'];
 
-                    if ($block->save())
-                    {
+                    if ($block->save()) {
                         // Ofer rasplata minerului pentru minarea blocurilor
                         $minersWallet->balance = $minersWallet->balance + $block->fees;
                         $minersWallet->save();
 
                         $hash->block_id = $block->id;
-                        $hash->hash     = $blockResponse['hash'];
+                        $hash->hash = $blockResponse['hash'];
                         $hash->save();
 
                         // Trimti banii la toti cei care erau receiveri si nu au primit inca banii tranzactiei
-                        foreach (Transaction::find()->where(['status' => '0'])->each() as $transaction)
-                        {
-                            $receiverWallet          = Wallet::findOne(['user_id' => $transaction->receiver_id]);
+                        foreach (Transaction::find()->where(['status' => '0'])->each() as $transaction) {
+                            $receiverWallet = Wallet::findOne(['user_id' => $transaction->receiver_id]);
                             $receiverWallet->balance = $receiverWallet->balance + $transaction->amount;
                             $receiverWallet->save();
                         }
@@ -119,6 +113,7 @@ class BlockController extends \yii\web\Controller
         }
         return $this->render('mine-block', ['mempoolTransactionQuery' => $mempoolTransactionQuery, 'lastBlock' => $lastBlock]);
     }
+
     public function actionViewBlock($id)
     {
         $queryBlockInfo = (new Query())
@@ -149,7 +144,7 @@ class BlockController extends \yii\web\Controller
             ->all();
 
         return $this->render('view-block', [
-            'model'          => $this->findModel($id),
+            'model' => $this->findModel($id),
             'queryBlockInfo' => $queryBlockInfo,
         ]);
     }
@@ -163,8 +158,7 @@ class BlockController extends \yii\web\Controller
      */
     protected function findModel($id)
     {
-        if (($model = Block::findOne($id)) !== null)
-        {
+        if (($model = Block::findOne($id)) !== null) {
             return $model;
         }
 

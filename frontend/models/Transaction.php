@@ -2,9 +2,12 @@
 
 namespace frontend\models;
 
+use frontend\models\query\TransactionQuery;
 use Yii;
 use common\models\User;
 use common\models\Profile;
+use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "transaction".
  *
@@ -23,7 +26,7 @@ use common\models\Profile;
  * @property User $sender
  * @property User $receiver
  */
-class Transaction extends \yii\db\ActiveRecord
+class Transaction extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -118,6 +121,6 @@ class Transaction extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\TransactionQuery(get_called_class());
+        return new TransactionQuery(get_called_class());
     }
 }

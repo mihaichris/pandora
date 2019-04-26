@@ -2,8 +2,10 @@
 
 namespace frontend\models;
 
+use frontend\models\query\WalletQuery;
 use Yii;
-use common\models\User; 
+use common\models\User;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "wallet".
@@ -17,7 +19,7 @@ use common\models\User;
  *
  * @property User $user
  */
-class Wallet extends \yii\db\ActiveRecord
+class Wallet extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -72,6 +74,6 @@ class Wallet extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\WalletQuery(get_called_class());
+        return new WalletQuery(get_called_class());
     }
 }

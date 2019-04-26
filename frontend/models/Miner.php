@@ -3,7 +3,9 @@
 namespace frontend\models;
 
 use common\models\User;
+use frontend\models\query\MinerQuery;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "miner".
@@ -15,7 +17,7 @@ use Yii;
  * @property Block[] $blocks
  * @property User $user
  */
-class Miner extends \yii\db\ActiveRecord
+class Miner extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -72,6 +74,6 @@ class Miner extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\MinerQuery(get_called_class());
+        return new MinerQuery(get_called_class());
     }
 }

@@ -18,6 +18,9 @@ use common\components\Helper;
 use frontend\models\Node;
 use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
+
 class TransactionController extends \yii\web\Controller
 {
 
@@ -125,22 +128,22 @@ class TransactionController extends \yii\web\Controller
             // ],
         ];
 
-        $fullExportMenu = ExportMenu::widget([
-            'dataProvider'    => $dataProvider,
-            'columns'         => $columns,
-            'target'          => ExportMenu::TARGET_BLANK,
-            'pjaxContainerId' => 'kv-pjax-container',
-            'exportContainer' => [
-                'class' => 'btn-group mr-2',
-            ],
-            'dropdownOptions' => [
-                'label'       => 'Full',
-                'class'       => 'btn btn-secondary',
-                'itemsBefore' => [
-                    '<div class="dropdown-header">Export All Data</div>',
-                ],
-            ],
-        ]);
+//        $fullExportMenu = ExportMenu::widget([
+//            'dataProvider'    => $dataProvider,
+//            'columns'         => $columns,
+//            'target'          => ExportMenu::TARGET_BLANK,
+//            'pjaxContainerId' => 'kv-pjax-container',
+//            'exportContainer' => [
+//                'class' => 'btn-group mr-2',
+//            ],
+//            'dropdownOptions' => [
+//                'label'       => 'Full',
+//                'class'       => 'btn btn-secondary',
+//                'itemsBefore' => [
+//                    '<div class="dropdown-header">Export All Data</div>',
+//                ],
+//            ],
+//        ]);
         $layout = <<< HTML
         <div class="card card-stats">
                 <div class="card-header" data-background-color="blue">
@@ -162,7 +165,7 @@ HTML;
             'searchModel'    => $searchModel,
             'dataProvider'   => $dataProvider,
             'columns'        => $columns,
-            'fullExportMenu' => $fullExportMenu,
+            //'fullExportMenu' => $fullExportMenu,
         ]);
     }
 
@@ -229,13 +232,16 @@ HTML;
         else{
             $user_id = null;
         }  
-        $model = new Transaction();
-        return $this->render('generate-transaction', ['walletModel' => $walletModel, 'model' => $model, 'lastTransaction' => $lastTransaction,'user_id'=>$user_id]);
+        // $model = new Transaction();
+        return $this->render('generate-transaction', [
+            'walletModel' => $walletModel,
+            //'model' => $model,
+            'lastTransaction' => $lastTransaction,'user_id'=>$user_id]);
     }
 
     public function actionChangeReceiver()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         if (Yii::$app->request->isPost)
         {
             $user_id = Yii::$app->request->post('data');
@@ -253,7 +259,7 @@ HTML;
 
     public function actionConfirmTransaction()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         $mempoolModel                = new Mempool();
         $transactionModel            = new Transaction();
         $senderWalletModel           = Wallet::findOne(['user_id' => Yii::$app->user->identity->id]);
@@ -312,7 +318,6 @@ HTML;
                 else
                 {
                     $message = [$transactionModel->errors, "type" => "danger"];
-                    //$message = ["message" => "Opss, a aparut o eroare la procesarea trazacției.", "type" => "danger"];
                 }
             }
 
@@ -329,7 +334,7 @@ HTML;
 
     public function actionSignTransaction()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON; 
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $receiver_address            = Wallet::find()->where(['user_id' => Yii::$app->request->post('receiver_id')])->one();
         $generateTransactionResponse = Yii::$app->pandora->getHttpClient()
             ->post('transactions/generate_transaction',
@@ -341,11 +346,12 @@ HTML;
                 ])->send();
         if ($generateTransactionResponse->isOk)
         {
-            \Yii::$app->response->data = $generateTransactionResponse->data;
+            Yii::$app->response->data = $generateTransactionResponse->data;
         }
         else
         {
             $message = ["message" => "Nu s-a putut semna tranzactia, ai grija ca nodul tau sa fie pornit si conectat la retea.", "type" => "danger"];
+            Yii::$app->response->data = $message;
         }
 
     }

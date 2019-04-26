@@ -3,7 +3,9 @@
 namespace frontend\models;
 
 use common\models\User;
+use frontend\models\query\InvestorQuery;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "investor".
@@ -14,7 +16,7 @@ use Yii;
  *
  * @property User $user
  */
-class Investor extends \yii\db\ActiveRecord
+class Investor extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -63,6 +65,6 @@ class Investor extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\InvestorQuery(get_called_class());
+        return new InvestorQuery(get_called_class());
     }
 }

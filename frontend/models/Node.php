@@ -4,7 +4,9 @@ namespace frontend\models;
 
 
 use common\models\User;
+use frontend\models\query\NodeQuery;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "node".
@@ -15,7 +17,7 @@ use Yii;
  *
  * @property User $user
  */
-class Node extends \yii\db\ActiveRecord
+class Node extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -64,6 +66,6 @@ class Node extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\NodeQuery(get_called_class());
+        return new NodeQuery(get_called_class());
     }
 }

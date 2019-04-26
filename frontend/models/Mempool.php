@@ -2,9 +2,11 @@
 
 namespace frontend\models;
 
+use frontend\models\query\MempoolQuery;
 use Yii;
 use common\models\User;
 use common\models\Profile;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "mempool".
@@ -18,7 +20,7 @@ use common\models\Profile;
  *
  * @property User $user
  */
-class Mempool extends \yii\db\ActiveRecord
+class Mempool extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -71,6 +73,6 @@ class Mempool extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\MempoolQuery(get_called_class());
+        return new MempoolQuery(get_called_class());
     }
 }

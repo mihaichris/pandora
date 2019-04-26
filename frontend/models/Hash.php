@@ -2,7 +2,8 @@
 
 namespace frontend\models;
 
-use Yii;
+use frontend\models\query\HashQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "hash".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property Block $block
  */
-class Hash extends \yii\db\ActiveRecord
+class Hash extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -62,6 +63,6 @@ class Hash extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \frontend\models\query\HashQuery(get_called_class());
+        return new HashQuery(get_called_class());
     }
 }

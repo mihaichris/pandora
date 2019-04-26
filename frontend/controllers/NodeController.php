@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use frontend\models\Node;
@@ -10,7 +11,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\helpers\Html;
 use yii\db\Query;
-use common\components\Helper;
+use \Exception as Exception;
+use yii\web\Response;
 
 /**
  * NodeController implements the CRUD actions for Node model.
@@ -24,9 +26,9 @@ class NodeController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index','view','merge-nodes','remove-node','add-node'],
-                        'allow'   => true,
-                        'roles'   => ['@'],
+                        'actions' => ['index', 'view', 'merge-nodes', 'remove-node', 'add-node'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -39,31 +41,30 @@ class NodeController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel      = new NodeSearch();
-        $dataProvider     = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new NodeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $getNodesResponse = [];
-        $columns          =
+        $columns =
             [
-            [
-                'attribute' => 'username',
-                'value'     => 'user.username',
-            ],
-            "node_address",
-
-            ['class'        => 'kartik\grid\ActionColumn',
-                'header'        => 'Actions',
-                //'headerOptions' => ['style' => 'color:#337ab7'],
-                'template'      => '{view}',
-                'buttons'       => [
-                    'view'   => function ($url, $model)
-                    {
-                        return Html::a('<i class="material-icons">person</i>', $url, [
-                            //'data-toggle'=>"tooltip",'data-placement'=>'top','title'=>'Vezi profil.'
-                        ]);
-                    },
+                [
+                    'attribute' => 'username',
+                    'value' => 'user.username',
                 ],
-            ],
-        ];
+                "node_address",
+
+                ['class' => 'kartik\grid\ActionColumn',
+                    'header' => 'Actions',
+                    //'headerOptions' => ['style' => 'color:#337ab7'],
+                    'template' => '{view}',
+                    'buttons' => [
+                        'view' => function ($url, $model) {
+                            return Html::a('<i class="material-icons">person</i>', $url, [
+                                //'data-toggle'=>"tooltip",'data-placement'=>'top','title'=>'Vezi profil.'
+                            ]);
+                        },
+                    ],
+                ],
+            ];
         $layout = <<< HTML
     <div class="card card-stats">
             <div class="card-header pull-right" data-background-color="green">
@@ -79,19 +80,16 @@ class NodeController extends Controller
     </div>
     </div>
 HTML;
-        try
-        {
+        try {
             $getNodesResponse = (Yii::$app->pandora->getHttpClient()->get('nodes/get_nodes')->send())->data['nodes'];
-        }
-        catch (\Exception $e)
-        {
+        } catch (Exception $e) {
             Yii::$app->session->setFlash('error', ' Ai grijă ca rețeaua ta să fie pornită !');
         }
         return $this->render('index', [
-            'searchModel'      => $searchModel,
-            'dataProvider'     => $dataProvider,
-            'layout'           => $layout,
-            'columns'          => $columns,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'layout' => $layout,
+            'columns' => $columns,
             'getNodesResponse' => $getNodesResponse,
         ]);
     }
@@ -105,13 +103,13 @@ HTML;
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $query = (new Query())->select(['user.username','profile.public_email as email','profile.bio','profile.name','profile.location','node.node_address','auth_assignment.item_name as role','FROM_UNIXTIME(user.created_at) as created_at'])
-                ->from('node')
-                ->innerJoin('user','user.id=node.user_id')
-                ->innerJoin('profile','profile.user_id=user.id')
-                ->innerJoin('auth_assignment','auth_assignment.user_id=user.id')
-                ->where(['node.user_id'=> $model->user_id])
-                ->one();
+        $query = (new Query())->select(['user.username', 'profile.public_email as email', 'profile.bio', 'profile.name', 'profile.location', 'node.node_address', 'auth_assignment.item_name as role', 'FROM_UNIXTIME(user.created_at) as created_at'])
+            ->from('node')
+            ->innerJoin('user', 'user.id=node.user_id')
+            ->innerJoin('profile', 'profile.user_id=user.id')
+            ->innerJoin('auth_assignment', 'auth_assignment.user_id=user.id')
+            ->where(['node.user_id' => $model->user_id])
+            ->one();
         //Helper::debug($query->createCommand()->getRawSql());
         return $this->render('view', [
             'query' => $query,
@@ -127,8 +125,7 @@ HTML;
      */
     protected function findModel($id)
     {
-        if (($model = Node::findOne($id)) !== null)
-        {
+        if (($model = Node::findOne($id)) !== null) {
             return $model;
         }
 
@@ -139,18 +136,14 @@ HTML;
     {
         $nodesArray = [];
 
-        foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node)
-        {
+        foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node) {
             array_push($nodesArray, 'http://' . $node->node_address);
         }
         $getNodesResponse = Yii::$app->pandora->getHttpClient()->post('nodes/connect_nodes', ['nodes' => $nodesArray])->send();
 
-        if ($getNodesResponse->isOk)
-        {
+        if ($getNodesResponse->isOk) {
             Yii::$app->session->setFlash('success', ' Toate nodurile sunt conectate !');
-        }
-        else
-        {
+        } else {
             Yii::$app->session->setFlash('error', ' Opss, a apărut o eroare la conectarea nodurilor!');
         }
         $this->redirect('index');
@@ -161,15 +154,12 @@ HTML;
         $myNode = Node::findOne(['user_id' => Yii::$app->user->identity->id]);
         $client = new Client(['baseUrl' => 'http://' . $node, 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
 
-        $getRemoveNodeResponse   = Yii::$app->pandora->getHttpClient()->delete('nodes/remove_node/' . $node)->send();
+        $getRemoveNodeResponse = Yii::$app->pandora->getHttpClient()->delete('nodes/remove_node/' . $node)->send();
         $getRemoveMyNodeResponse = $client->delete('nodes/remove_node/' . $myNode->node_address)->send();
 
-        if ($getRemoveNodeResponse->isOk and $getRemoveMyNodeResponse->isOk)
-        {
+        if ($getRemoveNodeResponse->isOk and $getRemoveMyNodeResponse->isOk) {
             Yii::$app->session->setFlash('success', ' Nodul ' . $node . ' a fost șters cu succes !');
-        }
-        else
-        {
+        } else {
             Yii::$app->session->setFlash('error', ' Opss, a apărut o eroare la ștergerea nodului!');
         }
         $this->redirect('index');
@@ -177,18 +167,15 @@ HTML;
 
     public function actionAddNode()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $node                        = ['http://' . trim(Yii::$app->request->post('node'))];
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $node = ['http://' . trim(Yii::$app->request->post('node'))];
         $getConnectNodeResponse = Yii::$app->pandora->getHttpClient()->post('nodes/connect_nodes', ['nodes' => $node])->send();
 
-        if ($getConnectNodeResponse->isOk)
-        {
+        if ($getConnectNodeResponse->isOk) {
             $message = ["message" => "Nodul a fost ădaugat cu succes in rețeaua ta.", "type" => "success"];
-        }
-        else
-        {
+        } else {
             $message = ["message" => "Opss, a apărut o eroare la adăugarea nodului.", "type" => "danger"];
         }
-        \Yii::$app->response->data = $message;
+        Yii::$app->response->data = $message;
     }
 }

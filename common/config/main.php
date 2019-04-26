@@ -32,13 +32,13 @@ return [
             'emailChangeStrategy' => dektrium\user\Module::STRATEGY_SECURE,
             // 'enableAccountDelete'=> true,
 
-            'mailer' => [
-                'sender' => 'no-reply@myhost.com', // or ['no-reply@myhost.com' => 'Sender name']
-                'welcomeSubject' => 'Welcome subject',
-                'confirmationSubject' => 'Confirmation subject',
-                'reconfirmationSubject' => 'Email change subject',
-                'recoverySubject' => 'Recovery subject',
-            ],
+//            'mailer' => [
+//                'sender' => 'no-reply@myhost.com', // or ['no-reply@myhost.com' => 'Sender name']
+//                'welcomeSubject' => 'Welcome subject',
+//                'confirmationSubject' => 'Confirmation subject',
+//                'reconfirmationSubject' => 'Email change subject',
+//                'recoverySubject' => 'Recovery subject',
+//            ],
             'modelMap' => [
                 'RegistrationForm' => 'common\models\RegistrationForm',
                 //'Profile' => 'common\models\Profile',

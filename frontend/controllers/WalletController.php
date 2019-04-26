@@ -6,9 +6,10 @@ use DateTime;
 use frontend\models\Wallet;
 use Yii;
 use yii\filters\AccessControl;
-use common\components\Helper;
+use yii\web\Controller;
+use yii\web\Response;
 
-class WalletController extends \yii\web\Controller
+class WalletController extends Controller
 {
 
     /**
@@ -42,7 +43,7 @@ class WalletController extends \yii\web\Controller
         }
         if ($model->load(Yii::$app->request->post()))
         {
-            $setReceiverResponse    = Yii::$app->pandora->getHttpClient()->post('user/set_receiver', ['receiver' => Yii::$app->request->post('public_address')])->send();
+            Yii::$app->pandora->getHttpClient()->post('user/set_receiver', ['receiver' => Yii::$app->request->post('public_address')])->send();
             $model->user_id    = Yii::$app->user->identity->id;
             $model->created_at = $time->format('Y-m-d H:i:s');
 
@@ -62,7 +63,7 @@ class WalletController extends \yii\web\Controller
 
     public function actionAddBalance()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         
         $model          = Wallet::findOne(['user_id' => Yii::$app->user->identity->id]);
         $depositAmount = Yii::$app->request->post('data');
@@ -87,9 +88,9 @@ class WalletController extends \yii\web\Controller
 
     public function actionGenerateWallet()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $generateWalletResponse = Yii::$app->pandora->getHttpClient()->get('wallet/new_wallet')->send();
-        \Yii::$app->response->data = $generateWalletResponse->data;
+        Yii::$app->response->data = $generateWalletResponse->data;
     }
 
 }
