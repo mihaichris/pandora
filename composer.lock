@@ -1558,12 +1558,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "2a13f659b000463bb32e68cf4914e628f9da00c3"
+                "reference": "6744723ac538a8f525fd39bbadcbe86a2a442817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/2a13f659b000463bb32e68cf4914e628f9da00c3",
-                "reference": "2a13f659b000463bb32e68cf4914e628f9da00c3",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/6744723ac538a8f525fd39bbadcbe86a2a442817",
+                "reference": "6744723ac538a8f525fd39bbadcbe86a2a442817",
                 "shasum": ""
             },
             "require": {
@@ -1602,7 +1602,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2019-04-26T06:29:00+00:00"
+            "time": "2019-04-28T13:33:04+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
