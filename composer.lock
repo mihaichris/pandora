@@ -317,16 +317,16 @@
         },
         {
             "name": "bpampuch/pdfmake",
-            "version": "0.1.54",
+            "version": "0.1.55",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpampuch/pdfmake.git",
-                "reference": "b80b78904d9542459c45d2d1ab142e6eb009a39b"
+                "reference": "96f308ef10349e3055be8e6c75a6258aeedd34b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/b80b78904d9542459c45d2d1ab142e6eb009a39b",
-                "reference": "b80b78904d9542459c45d2d1ab142e6eb009a39b",
+                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/96f308ef10349e3055be8e6c75a6258aeedd34b6",
+                "reference": "96f308ef10349e3055be8e6c75a6258aeedd34b6",
                 "shasum": ""
             },
             "type": "library",
@@ -349,7 +349,7 @@
                 "pdf",
                 "pdfmake"
             ],
-            "time": "2019-03-17T07:15:53+00:00"
+            "time": "2019-05-01T05:06:54+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -4625,7 +4625,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.26",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -6950,7 +6950,7 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
@@ -7007,7 +7007,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -7147,7 +7147,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -7200,7 +7200,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -7257,7 +7257,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -7321,7 +7321,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7370,7 +7370,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.7",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
