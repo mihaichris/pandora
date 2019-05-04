@@ -55,12 +55,11 @@ class KeyStorageController extends Controller
             return $this->render('create', ['model' => $model]);
         }
     }
+
     /**
-     * Updates an existing KeyStorageItem model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     *
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -71,12 +70,13 @@ class KeyStorageController extends Controller
             return $this->render('update', ['model' => $model]);
         }
     }
+
     /**
-     * Deletes an existing KeyStorageItem model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     *
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {

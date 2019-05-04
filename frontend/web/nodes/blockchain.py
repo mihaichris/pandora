@@ -110,7 +110,7 @@ class Blockchain():
 
     def init_chain_from_db(self,db):
         block_cursor = db.cursor()
-        block_cursor.execute("SELECT block.id, block.timestamp, block.proof_of_work, block.previous_hash,hash.hash,miner.username, miner.created_at  FROM block INNER JOIN hash ON hash.block_id = block.id INNER JOIN user as miner ON  block.miner_id=miner.id")
+        block_cursor.execute("SELECT block.id, block.timestamp, block.proof_of_work, block.previous_hash,hash.hash,miner.username, miner.created_at  FROM block INNER JOIN hash ON hash.block_id = block.id INNER JOIN user as miner ON  block.miner_id=miner.id ORDER BY id ASC")
         block_result = block_cursor.fetchall()
 
         if len(block_result) > 0:

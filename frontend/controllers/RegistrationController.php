@@ -10,11 +10,10 @@ use yii\web\NotFoundHttpException;
 class RegistrationController extends BaseRegistrationController
 {
     /**
-     * Displays the registration page.
-     * After successful registration if enableConfirmation is enabled shows info message otherwise
-     * redirects to home page.
-     * @return string
-     * @throws \yii\web\HttpException
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \yii\base\ExitException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionRegister()
     {

@@ -3,10 +3,13 @@
 namespace frontend\models;
 
 use frontend\models\query\TransactionQuery;
+use kartik\grid\GridView;
 use Yii;
 use common\models\User;
 use common\models\Profile;
 use yii\db\ActiveRecord;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "transaction".
@@ -112,7 +115,6 @@ class Transaction extends ActiveRecord
     {
         return $this->hasOne(Profile::class, ['user_id' => 'sender_id']);
     }
-
 
 
     /**

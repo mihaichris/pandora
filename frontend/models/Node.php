@@ -7,6 +7,7 @@ use common\models\User;
 use frontend\models\query\NodeQuery;
 use Yii;
 use yii\db\ActiveRecord;
+use yii\db\Query;
 
 /**
  * This is the model class for table "node".
@@ -67,5 +68,16 @@ class Node extends ActiveRecord
     public static function find()
     {
         return new NodeQuery(get_called_class());
+    }
+
+
+    public static function getUserNode($id){
+        return (new Query())->select(['user.username', 'profile.public_email as email', 'profile.bio', 'profile.name', 'profile.location', 'node.node_address', 'auth_assignment.item_name as role', 'FROM_UNIXTIME(user.created_at) as created_at'])
+            ->from('node')
+            ->innerJoin('user', 'user.id=node.user_id')
+            ->innerJoin('profile', 'profile.user_id=user.id')
+            ->innerJoin('auth_assignment', 'auth_assignment.user_id=user.id')
+            ->where(['node.user_id' => $id])
+            ->one();
     }
 }
