@@ -222,7 +222,7 @@
             "version": "3.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "9e8ec3d10fad04748176144f108d7355662ae75e"
             },
             "dist": {
@@ -317,16 +317,16 @@
         },
         {
             "name": "bpampuch/pdfmake",
-            "version": "0.1.55",
+            "version": "0.1.56",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpampuch/pdfmake.git",
-                "reference": "96f308ef10349e3055be8e6c75a6258aeedd34b6"
+                "reference": "2f3c8cba05d99878d33da77c8bbd7ab672b6196a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/96f308ef10349e3055be8e6c75a6258aeedd34b6",
-                "reference": "96f308ef10349e3055be8e6c75a6258aeedd34b6",
+                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/2f3c8cba05d99878d33da77c8bbd7ab672b6196a",
+                "reference": "2f3c8cba05d99878d33da77c8bbd7ab672b6196a",
                 "shasum": ""
             },
             "type": "library",
@@ -349,7 +349,7 @@
                 "pdf",
                 "pdfmake"
             ],
-            "time": "2019-05-01T05:06:54+00:00"
+            "time": "2019-05-04T05:19:18+00:00"
         },
         {
             "name": "cebe/markdown",
