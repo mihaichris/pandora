@@ -15,7 +15,7 @@ use common\components\Helper;
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href=<?= Yii::$app->homeUrl ?> class="simple-text">
+            <a href="<?= Yii::$app->homeUrl ?>" class="simple-text">
             <?= Html::img('@web/frontend/web/img/logo.png', ['class'=>'logo-pandora','alt' => Html::encode(Yii::$app->name)]) ?>
             </a>
         </div>
