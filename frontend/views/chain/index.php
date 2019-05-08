@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 
             <div class="card-content">
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-1 text-center">
+                    <div class="col-md-10 col-md-offset-1 text-center"
+                         style="display: :inline-block; word-break: break-all">
                         <h4 class="description"><span
                                     class="text-primary">Hash-ul block-ului precedent: </span><br> <?= $genesisBlock['chain'][0]['previous_hash'] ?>
                         </h4>
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="display: :inline-block; word-break: break-all">
                         <h4 class="description"><span
                                     class="text-primary">Hash-ul blocului actual:</span><br> <?= $genesisBlock['hashes'][0] ?>
                         </h4>
@@ -127,7 +128,7 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
                 </div>
                 <div class="card card-raised rounded">
                     <div class="card-content">
-                        <div class="col-md-12 text-center">
+                        <div class="col-md-12 text-center" style="display: :inline-block; word-break: break-all">
                             <h4 class="description"><span
                                         class="text-primary">Hash-ul block-ului precedent: </span><br> <?= $block['previous_hash'] ?>
                             </h4>
@@ -189,11 +190,13 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
                                     style="font-size:1.5em">Minat la data de: <?= date_format(new \DateTime($block['timestamp']), 'Y-m-d H:i:s') ?></span>
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <div class="col-md-12">
-                            <h4 class="description"><span
-                                        class="text-primary">Hash-ul blocului actual minat:</span><br> <?= $genesisBlock['hashes'][$block['index'] - 1] ?>
-                            </h4>
+                    <div class="card-footer">
+                        <div class="row text-center">
+                            <div class="col-md-12" style="display: :inline-block; word-break: break-all">
+                                <h4 class="description"><span
+                                            class="text-primary">Hash-ul blocului actual minat:</span><br> <?= $genesisBlock['hashes'][$block['index'] - 1] ?>
+                                </h4>
+                            </div>
                         </div>
                     </div>
                 </div>

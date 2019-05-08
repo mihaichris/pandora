@@ -97,8 +97,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="card-content">
             <div class="tab-content">
-                <div class="tab-pane active" id="card_public-key"><p style='word-wrap: break-word; width: 110em;'><?=($model->public_address)? $model->public_address : null ?></p></div>
-                <div class="tab-pane" id="card_private-key"><p style='word-wrap: break-word; width: 110em;'><?=($model->private_address)? $model->private_address : null ?></p></div>
+                <div class="tab-pane active" id="card_public-key"><p style='word-break: break-all'><?=($model->public_address)? $model->public_address : null ?></p></div>
+                <div class="tab-pane" id="card_private-key"><p style='word-break: break-all;'><?=($model->private_address)? $model->private_address : null ?></p></div>
             </div>
         </div>
 
