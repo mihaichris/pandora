@@ -31,7 +31,15 @@ class TransactionController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['generate-transaction', 'index', 'mempool', 'mempool-details', 'view', 'change-receiver', 'confirm-transaction', 'sign-transaction'],
+                        'actions' => [
+                            'generate-transaction',
+                            'index',
+                            'mempool',
+                            'mempool-details',
+                            'view',
+                            'change-receiver',
+                            'confirm-transaction',
+                            'sign-transaction'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
