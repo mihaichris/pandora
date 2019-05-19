@@ -116,32 +116,7 @@ class BlockController extends Controller
 
     public function actionViewBlock($id)
     {
-        $queryBlockInfo = (new Query())
-            ->select(['block.id as block_index',
-                'miner_user.username as miner_username',
-                'sender_user.username as sender_username',
-                'receiver_user.username as receiver_username',
-                'miner.name as miner_name',
-                'sender.name as sender_name',
-                'receiver.name as receiver_name',
-                'block.fees',
-                'block.proof_of_work',
-                'block.timestamp',
-                'transaction.amount as transaction_amount',
-                'transaction.created_at as transaction_created_at',
-                'hash.hash as block_hash',
-                'block.previous_hash as previous_block_hash'])
-            ->from('transaction')
-            ->innerJoin('block', 'block.id = transaction.block_id')
-            ->innerJoin('user miner_user', 'miner_user.id=block.miner_id')
-            ->innerJoin('user receiver_user', 'receiver_user.id=transaction.receiver_id')
-            ->innerJoin('user sender_user', 'sender_user.id=transaction.sender_id')
-            ->innerJoin('profile miner', 'miner.user_id=miner_user.id')
-            ->innerJoin('profile receiver', 'receiver.user_id=receiver_user.id')
-            ->innerJoin('profile sender', 'sender.user_id=sender_user.id')
-            ->innerJoin('hash', 'hash.block_id=block.id')
-            ->where(['block.id' => $id])
-            ->all();
+        $queryBlockInfo = Block::getBlock($id);
 
         return $this->render('view-block', [
             'model' => $this->findModel($id),
