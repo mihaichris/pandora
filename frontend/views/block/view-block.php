@@ -54,12 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
       <?php endforeach;?>
     </div>
     <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center" style="display: :inline-block; word-break: break-all">
                 <h4 class="description"><span class="text-primary">Hash-ul block-ului precedent: </span><br> <?= $queryBlockInfo[0]['previous_block_hash'] ?> </h4>
             </div>
         </div>   
     <div class="row text-center">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center" style="display: :inline-block; word-break: break-all">
             <h4 class="description"><span class="text-primary">Hash-ul blocului actual minat:</span><br>  <?= $queryBlockInfo[0]['block_hash'] ?> </h4>  
         </div>
     </div>
