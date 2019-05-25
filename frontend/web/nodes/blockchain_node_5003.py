@@ -390,6 +390,10 @@ def mine_block():
     block = blockchain.create_block(proof, previous_hash)
     
     block_hash = blockchain.proof_of_work(block)
+    
+    if block['index'] == 2:
+        blockchain.chain_hashes[0] = block['previous_hash']
+    
     blockchain.chain_hashes.append(block_hash[0])
     response = {
                 'message': 'Felicitari, tocmai ai minat un nou block!',
