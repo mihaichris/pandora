@@ -55,7 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>Beneficiar</th>
                                 <th>Suma trimisă</th>
                                 <th>Creată la data de</th>
-                                <th>Recompensă</th>
+                                <?php if (Yii::$app->user->can('Miner')): ?>
+                                    <th>Recompensă</th>
+                                <?php  endif; ?>
                                 <th>Acțiuni</th>
                             </tr>
                             </thead>
@@ -69,7 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <td><?= $transaction['receiver'] ?></td>
                                     <td><?= $transaction['amount'] . "  <i  style='font-size:1em 'class='material-icons'>euro_symbol</i>" ?> </td>
                                     <td><?= date_format(date_create($transaction['created_at']), 'd, F Y H:i') ?></td>
-                                    <td> <?= ($transaction['amount'] * 0.1) ?> </td>
+                                    <?php if (Yii::$app->user->can('Miner')): ?>
+                                        <td> <?= ($transaction['amount'] * 0.1) ?> </td>
+                                    <?php endif; ?>
                                     <td><?= Html::button("<i class='fa fa-eye'></i>", ['class' => 'btn  btn-sm btn-simple btn-warning', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Informații despre tranzacție', 'onclick' => 'mempoolDetails(' . $transaction['id'] . ')']) ?></td>
                                 </tr>
                             <?php endforeach; ?>

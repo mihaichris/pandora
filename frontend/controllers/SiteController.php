@@ -24,6 +24,7 @@ use yii\web\Controller;
 use common\components\Helper;
 use yii\web\JsExpression;
 use \InvalidArgumentException as InvalidArgumentException;
+
 /**
  * Site controller
  */
@@ -226,7 +227,7 @@ class SiteController extends Controller
                     'yAxes' => [[
                         'ticks' => [
                             'beginAtZero' => true,
-                            'stepSize'=>1,
+                            'stepSize' => 1,
                             'min' => 0,
                         ]
                     ]],
@@ -271,7 +272,7 @@ class SiteController extends Controller
                     'yAxes' => [[
                         'ticks' => [
                             'beginAtZero' => true,
-                            'stepSize'=>1,
+                            'stepSize' => 1,
                             'min' => 0,
                         ]
                     ]],
