@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 <div class="card card-pricing card-raised rounded">
                     <div class="card-content">
@@ -47,62 +47,63 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div> 
         </div>
-        <div class="col-md-4">
-            <div class="card card-raised rounded">   
-                 <div class="card-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="info text-center">
-                                <div class="icon">
-                                    <i class="material-icons text-primary" style="font-size:3em">chat</i>
-                                </div>
-                                <h4 class="info-title">Free Chat</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-                            </div> 
-                        </div> 
-                    </div>
-                    <div class="row">       
-                        <div class="col-md-12">
-                            <div class="info info-horizontal text-center">
-                                <div class="icon icon-rose">
-                                    <i class="material-icons text-rose" style="font-size:3em">group_work</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Collaborate</h4>
-                                    <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="row">       
-                        <div class="col-md-12">
-                            <div class="info info-horizontal text-center">
-                                <div class="icon icon-rose">
-                                    <i class="material-icons text-success" style="font-size:3em">code</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Collaborate</h4>
-                                    <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="row">       
-                        <div class="col-md-12">
-                            <div class="info info-horizontal text-center">
-                                <div class="icon icon-rose">
-                                    <i class="material-icons text-info" style="font-size:3em">graphic_eq</i>
-                                </div>
-                                <div class="description">
-                                    <h4 class="info-title">Collaborate</h4>
-                                    <p >The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>    
-            </div>
-        </div>
+<!--        <div class="col-md-4">-->
+<!--            <div class="card card-raised rounded">   -->
+<!--                 <div class="card-content">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="info text-center">-->
+<!--                                <div class="icon">-->
+<!--                                    <i class="material-icons text-primary" style="font-size:3em">chat</i>-->
+<!--                                </div>-->
+<!--                                <h4 class="info-title">Asincron</h4>-->
+<!--                                <p>Criptarea informatiei este asincrona, cererea fiind trimisa la retea iar aceasta iti trimite raspunsul-->
+<!--                                    sub forma unui cod hash.</p>-->
+<!--                            </div> -->
+<!--                        </div> -->
+<!--                    </div>-->
+<!--                    <div class="row">       -->
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="info info-horizontal text-center">-->
+<!--                                <div class="icon icon-rose">-->
+<!--                                    <i class="material-icons text-rose" style="font-size:3em">group_work</i>-->
+<!--                                </div>-->
+<!--                                <div class="description">-->
+<!--                                    <h4 class="info-title">Collaborate</h4>-->
+<!--                                    <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>  -->
+<!--                    <div class="row">       -->
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="info info-horizontal text-center">-->
+<!--                                <div class="icon icon-rose">-->
+<!--                                    <i class="material-icons text-success" style="font-size:3em">code</i>-->
+<!--                                </div>-->
+<!--                                <div class="description">-->
+<!--                                    <h4 class="info-title">Collaborate</h4>-->
+<!--                                    <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>  -->
+<!--                    <div class="row">       -->
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="info info-horizontal text-center">-->
+<!--                                <div class="icon icon-rose">-->
+<!--                                    <i class="material-icons text-info" style="font-size:3em">graphic_eq</i>-->
+<!--                                </div>-->
+<!--                                <div class="description">-->
+<!--                                    <h4 class="info-title">Collaborate</h4>-->
+<!--                                    <p >The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI Kit lets you do more than ever before. </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div> -->
+<!--                </div>    -->
+<!--            </div>-->
+<!--        </div>-->
     </div>    
     <div class="row">  
         <div class="col-md-6">
