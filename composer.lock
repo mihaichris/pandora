@@ -66,16 +66,16 @@
         },
         {
             "name": "almasaeed2010/adminlte",
-            "version": "v2.4.10",
+            "version": "v2.4.12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/almasaeed2010/AdminLTE.git",
-                "reference": "4672183ea06a28d540a1d87900a7b5f84b1a1495"
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "7309e2e5d5f8fb78d97dd5ebf9243f3168ec8f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/4672183ea06a28d540a1d87900a7b5f84b1a1495",
-                "reference": "4672183ea06a28d540a1d87900a7b5f84b1a1495",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/7309e2e5d5f8fb78d97dd5ebf9243f3168ec8f20",
+                "reference": "7309e2e5d5f8fb78d97dd5ebf9243f3168ec8f20",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 "theme",
                 "web"
             ],
-            "time": "2019-03-11T18:01:44+00:00"
+            "time": "2019-06-11T11:52:23+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -307,16 +307,16 @@
         },
         {
             "name": "bpampuch/pdfmake",
-            "version": "0.1.56",
+            "version": "0.1.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bpampuch/pdfmake.git",
-                "reference": "2f3c8cba05d99878d33da77c8bbd7ab672b6196a"
+                "reference": "ae453de75092d0cf480870c82a9ed68ad18d376c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/2f3c8cba05d99878d33da77c8bbd7ab672b6196a",
-                "reference": "2f3c8cba05d99878d33da77c8bbd7ab672b6196a",
+                "url": "https://api.github.com/repos/bpampuch/pdfmake/zipball/ae453de75092d0cf480870c82a9ed68ad18d376c",
+                "reference": "ae453de75092d0cf480870c82a9ed68ad18d376c",
                 "shasum": ""
             },
             "type": "library",
@@ -339,7 +339,7 @@
                 "pdf",
                 "pdfmake"
             ],
-            "time": "2019-05-04T05:19:18+00:00"
+            "time": "2019-06-09T04:50:56+00:00"
         },
         {
             "name": "cebe/markdown",
