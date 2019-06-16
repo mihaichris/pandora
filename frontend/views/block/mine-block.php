@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
         "disabled"       => empty($mempoolTransactionQuery),
         "data-toggle"    => "tooltip",
         "data-placement" => "right",
-        "title"          => "Mineaza un block nou."])?>
+        "title"          => "Minează un block nou."])?>
                     <?php ActiveForm::end()?>
             </div>
             </div>

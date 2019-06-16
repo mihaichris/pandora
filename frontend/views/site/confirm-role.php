@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="panel-body text-center">
                     <p class="text-justify">
-                        Ca si miner, vei avea misiunea importanta de a mentine reteaua in picioare, folosind puterea de procesare a device-ului pe care il folosesti.
-                        Vei valida tranzactiile , creea blocuri astfel dezvoland reteaua Pandora. Tot efortul depus va fi rasplatit cu moneda noastra denumita paincoin. 
+                        Ca și miner, vei avea misiunea importantă de a mentine rețeaua în picioare, folosind puterea de procesare a device-ului pe care îl folosești.
+                        Vei valida tranzacțiile , crea blocuri astfel dezvoltând rețeaua Pandora. Tot efortul depus va fi răsplătit cu un procent din tranzacția validată. 
                     </p>
                     <?= Html::a('Alege sa devii miner', Url::to(['/site/confirmare-miner','username'=>$username]),['id'=>"miner" , 'class'=>'btn btn-warning']) ?>
                 </div>
@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="panel-body text-center">
                     <p class="text-justify">
-                        Investitorul este  cel care crede in reteaua noastra. Efectueaza tranzactii, si utilizeaza protocoalele retelei. Contribuie la viitorul unei economii
-                        in care puterea este detinuta de utilizator. Reprezinti subiectul principal in aceasta lume, un pionier al tehnologiei.
+                        Investitorul este cel care crede în rețeaua noastră. Efectuează tranzacții, si utilizează protocoalele rețelei. Contribuie la viitorul unei economii
+                        în care puterea este detinută de utilizator. Reprezinți subiectul principal în aceasta lume, un pionier al tehnologiei.
                     </p>
                     <br>
                     <?= Html::a('Alege sa devii investitor', Url::to(['/site/confirmare-investitor','username'=>$username]),['id'=>"investor" , 'class'=>'btn btn-info']) ?>

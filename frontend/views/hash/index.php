@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'placeholder'=>"Informatie necriptata",
                                         "id"=>"message-input"]) ?>
                         <p class="card-description">
-                            Introdu un mesaj si observa cum se cripteaza acesta. Acelasi algoritm este utilizat si pentru criptarea blocurilor din retea.
+                            Introdu un mesaj și observă cum se criptează acesta. Același algoritm este utilizat și pentru criptarea blocurilor din rețea.
                         </p>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                    <h4 class="card-title text-center">Hash-ul informatiei <i class="material-icons text-info">lock</i></h6></h4>
+                    <h4 class="card-title text-center">Hash-ul informației <i class="material-icons text-info">lock</i></h6></h4>
                     <?= Html::input('text','hash_message','', [
                                         'class'=>'form-control text-center',
                                         'readonly'=> true,

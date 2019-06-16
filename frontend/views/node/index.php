@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <th>Node</th>
                                     <th></th>
                                     <th></th>
-                                    <th>Actiuni</th>
+                                    <th>Acțiuni</th>
                                 </tr>
                                 </thead>
                                 <tbody>

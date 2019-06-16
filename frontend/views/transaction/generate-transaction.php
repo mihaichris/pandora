@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'name'=>'receiver_address',
                                 'value'=> $user_id ? $user_id : null,
                                 'data' => ArrayHelper::map(Profile::find()->innerJoin('user','profile.user_id=user.id')->where(['not',"profile.name = 'Admin'"])->andWhere(['not',"user_id=" . Yii::$app->user->identity->id])->asArray()->cache()->all(),'user_id','name'),
-                                'options' => ['placeholder' => 'Selecteaza beneficiarul...'],
+                                'options' => ['placeholder' => 'Selectează beneficiarul...'],
                                 'pluginOptions' => [
                                     'allowClear' => true
                                 ],
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         "id"=>"generate-transaction-button",
                         "data-toggle"    => "tooltip",
                         "data-placement" => "right",
-                        "title"          => "Genereaza o noua tranzactie.",
+                        "title"          => "Generează o noua tranzactie.",
                         //"disabled"=> isset(Yii::$app->request->post("receiver_address")),
                         ])?>
             </span>
