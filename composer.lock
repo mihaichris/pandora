@@ -1554,12 +1554,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "939d90102eb52043827dee1afbb65b50f90aac00"
+                "reference": "9405dc8ae9f16c9c45cad1989bd66350ee13e5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/939d90102eb52043827dee1afbb65b50f90aac00",
-                "reference": "939d90102eb52043827dee1afbb65b50f90aac00",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/9405dc8ae9f16c9c45cad1989bd66350ee13e5d6",
+                "reference": "9405dc8ae9f16c9c45cad1989bd66350ee13e5d6",
                 "shasum": ""
             },
             "require": {
@@ -1598,7 +1598,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2019-05-29T07:44:08+00:00"
+            "time": "2019-06-18T14:29:05+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -4728,16 +4728,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.20",
+            "version": "2.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "bd05e0e0ac353cb239997da78f459d0960a1fe9f"
+                "reference": "7e4622252c5f272373e1339a47d331e4a55e9591"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/bd05e0e0ac353cb239997da78f459d0960a1fe9f",
-                "reference": "bd05e0e0ac353cb239997da78f459d0960a1fe9f",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7e4622252c5f272373e1339a47d331e4a55e9591",
+                "reference": "7e4622252c5f272373e1339a47d331e4a55e9591",
                 "shasum": ""
             },
             "require": {
@@ -4824,7 +4824,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-06-04T19:10:59+00:00"
+            "time": "2019-06-18T14:25:08+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
