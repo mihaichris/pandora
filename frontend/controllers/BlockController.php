@@ -13,6 +13,7 @@ use yii\db\Query;
 use yii\filters\AccessControl;
 use \DateTime as DateTime;
 use yii\httpclient\Client;
+use yii\httpclient\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -75,11 +76,15 @@ class BlockController extends Controller
 
                 if ($mineBlockResponse->isOk) {
                     foreach (Node::find()->where(['!=', 'user_id', Yii::$app->user->identity->id])->each() as $node) {
-                        $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
-                        array_push($requests, $client->get('nodes/replace_chain'));
-                    }
+                        try{
+                            $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
+                            $response =  $client->get('nodes/replace_chain')->send();
+                        } catch (Exception $exception) {
+                            Yii::error('Error on node: ' . $exception->getMessage());
+                        }
 
-                    $replaceChainsResponse = $client->batchSend($requests);
+                    };
+
                     $blockResponse = $mineBlockResponse->data;
 
                     $block->timestamp = $blockResponse['timestamp'];

@@ -10,7 +10,9 @@ use frontend\models\Transaction;
 use frontend\models\Wallet;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\VarDumper;
 use yii\httpclient\Client;
 use frontend\models\Node;
 use yii\web\Controller;
@@ -158,8 +160,8 @@ class TransactionController extends Controller
         $sender = Yii::$app->request->post('sender');
         $requests = [];
 
-        $getNodesResponse = Yii::$app->pandora->getHttpClient()->get('nodes/get_nodes')->send();
-        if (!empty($getNodesResponse->data['nodes']) and $getNodesResponse->isOk) {
+        $responseNodes = Yii::$app->pandora->getHttpClient()->get('nodes/get_nodes')->send();
+        if (!empty($responseNodes->data['nodes']) and $responseNodes->isOk) {
 
             // foreach (Node::find()->each() as $node)
             // {
@@ -168,12 +170,14 @@ class TransactionController extends Controller
             // }
 
             // Iau toate nodurile la care este conectat respectivul utilizator si trimit tranzactia la toata lumea.
-            //Helper::debug($getNodesResponse->data['nodes']);
+            //Helper::debug($nodes->data['nodes']);
             if ($senderWalletModel->balance < $amount) {
                 $message = ["message" => "Nu ai suficienți bani în cont pentru a realiza tranzacția !", "type" => "danger"];
             } else {
-                foreach (Node::find()->each() as $node) {
-                    $client = new Client(['baseUrl' => 'http://' . $node->node_address, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
+                $nodes = $responseNodes->data['nodes'];
+                array_push($nodes, (Node::findOne(['user_id'=>Yii::$app->user->id]))->node_address);
+                foreach ($nodes as $node) {
+                    $client = new Client(['baseUrl' => 'http://' . $node, 'requestConfig' => ['format' => Client::FORMAT_JSON], 'responseConfig' => ['format' => Client::FORMAT_JSON]]);
                     array_push($requests, $client->post('transactions/new_transaction', ['sender' => $sender, 'receiver' => $receiverWalletModel->public_address, 'amount' => $amount, 'signature' => $signature]));
                 }
                 $newTransactionResponse = $client->batchSend($requests);
