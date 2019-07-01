@@ -90,11 +90,16 @@ class NodeSearch extends Node
             [
                 'attribute' => 'username',
                 'value' => 'user.username',
+                "label" => "Utilizator"
             ],
-            "node_address",
+            [
+                "value" =>"node_address",
+                "attribute" => "node_address",
+                "label" => "Adresa nodului",
+            ],
 
             ['class' => 'kartik\grid\ActionColumn',
-                'header' => 'Actions',
+                'header' => 'Acțiuni',
                 //'headerOptions' => ['style' => 'color:#337ab7'],
                 'template' => '{view}',
                 'buttons' => [

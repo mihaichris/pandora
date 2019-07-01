@@ -132,7 +132,7 @@ class NodeController extends Controller
         if ($getConnectNodeResponse->isOk) {
             $message = ["message" => "Nodul a fost ădaugat cu succes in rețeaua ta.", "type" => "success"];
         } else {
-            $message = ["message" => "Opss, a apărut o eroare la adăugarea nodului.", "type" => "danger"];
+            $message = ["message" => "Opss, a apărut o eroare la adăugarea nodului. Probabil ca acesta nu este pornit.", "type" => "danger"];
         }
         Yii::$app->response->data = $message;
     }
