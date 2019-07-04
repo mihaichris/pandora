@@ -24,8 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= Html::activeTextarea($walletModel,'public_address',['class'=>'form-control','rows' => '3','readonly'=>true])?>
                         <?= Html::endTag('div');?>
                         <?= Html::beginTag('div',['class'=>"form-group"]);?>
-                            <?= Html::label("Adresă privată a expeditorului",'private_address',['class'=>'form-label'])?>
-                            <?= Html::activeTextarea($walletModel,'private_address',['class'=>'form-control','rows' => '8','readonly'=>true])?>
+                            <?= Html::label("Adresă privată a expeditorului",'private_address',['class'=>'form-label'])?> &nbsp;
+                    <a  id="key" href="#" ><i  class="material-icons text-aqua">vpn_key</i></a>
+                    <?= Html::activeTextarea($walletModel,'private_address',['class'=>'form-control hidden','rows' => '8','readonly'=>true])?>
                         <?= Html::endTag('div');?>
                         <?= Html::beginTag('div',['class'=>"form-group"]);?>
                             <?= Html::label('Adresă destinatar','receiver_address',['class'=>'form-label'])?>

@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
  * @var dektrium\user\models\SettingsForm $model
  */
 
-$this->title = Yii::t('user', 'Account settings');
+$this->title = Yii::t('user', 'Setările contului');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -47,19 +47,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enableClientValidation' => false,
                 ]); ?>
 
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->label('Email')?>
 
-                <?= $form->field($model, 'username') ?>
+                <?= $form->field($model, 'username')->label('Nume de utilizator') ?>
 
-                <?= $form->field($model, 'new_password')->passwordInput() ?>
+                <?= $form->field($model, 'new_password')->passwordInput()->label('Parola nouă') ?>
 
                 <hr/>
 
-                <?= $form->field($model, 'current_password')->passwordInput() ?>
+                <?= $form->field($model, 'current_password')->passwordInput()->label('Parola curentă') ?>
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+                        <?= Html::submitButton(Yii::t('user', 'Salvează'), ['class' => 'btn btn-block btn-success']) ?><br>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php if ($model->module->enableAccountDelete): ?>
             <div class="panel panel-danger">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= Yii::t('user', 'Delete account') ?></h3>
+                    <h3 class="panel-title"><?= Yii::t('user', 'Șterge contul') ?></h3>
                 </div>
                 <div class="panel-body">
                     <p>

@@ -129,3 +129,12 @@ $("#confirm-transaction-button").click(function () {
   });
 });
 
+
+$("#key").click(function(){
+  if ($('#wallet-private_address').hasClass('hidden')) {
+    $('#wallet-private_address').removeClass('hidden');
+  }
+  else{
+    $('#wallet-private_address').addClass('hidden');
+  }
+});

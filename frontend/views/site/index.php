@@ -7,7 +7,7 @@ use dosamigos\chartjs\ChartJs;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Dashboard';
+$this->title = 'Tablou de bord';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

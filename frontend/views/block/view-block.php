@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="col-md-6 text-right">
-                <span style="font-size:1.5em"> Răsplată: <?=$queryBlockInfo[0]['fees']?></span> <i class="material-icons text-success" style="font-size:1.5em">attach_money</i>
+                <span style="font-size:1.5em"> Răsplată: <?=$queryBlockInfo[0]['fees']?></span> <i class="material-icons text-success" style="font-size:1.5em">euro_symbol</i>
             </div>
         </div>
         <h3><span class="text-danger">Tranzacții minate:</span></h3>
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <i class="material-icons" style="font-size:1.5em">date_range</i> <span style="font-size:1.5em"><?=$blockInfo['transaction_created_at']?></span>
             </div>
             <div class="col-md-6 text-center">
-                <i class="material-icons" style="font-size:1.5em">attach_money</i> <span style="font-size:1.5em"> <?=$blockInfo['transaction_amount']?></span>
+                <i class="material-icons" style="font-size:1.5em">euro_symbol</i> <span style="font-size:1.5em"> <?=$blockInfo['transaction_amount']?></span>
             </div>
         </div>
         <br><br>

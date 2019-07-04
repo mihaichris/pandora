@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  * @var dektrium\user\models\Profile $model
  */
 
-$this->title = Yii::t('user', 'Profile settings');
+$this->title = Yii::t('user', 'Setările de profil');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -50,13 +50,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'validateOnBlur' => false,
                 ]); ?>
 
-                <?= $form->field($model, 'name') ?>
+                <?= $form->field($model, 'name')->label('Nume') ?>
 
-                <?= $form->field($model, 'public_email') ?>
+                <?= $form->field($model, 'public_email')->label('Email public') ?>
 
                 <?= $form->field($model, 'website') ?>
 
-                <?= $form->field($model, 'location') ?>
+                <?= $form->field($model, 'location')->label('Locatie') ?>
 
                 <?= $form
                     ->field($model, 'timezone')
@@ -70,13 +70,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form
                     ->field($model, 'gravatar_email')
-                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+                    ->hint(Html::a(Yii::t('user', 'Schimbă poza de Gravatar'), 'http://gravatar.com')) ?>
 
                 <?= $form->field($model, 'bio')->textarea() ?>
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+                        <?= Html::submitButton(Yii::t('user', 'Salvează'), ['class' => 'btn btn-block btn-success']) ?>
                         <br>
                     </div>
                 </div>

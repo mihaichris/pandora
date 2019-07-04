@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
 
                             <div class="col-md-6 text-right">
                                 <span style="font-size:1.5em"> Răsplată: <?= end($block['transactions'])['amount'] ?></span>
-                                <i class="material-icons text-success" style="font-size:1.5em">attach_money</i>
+                                <i class="material-icons text-success" style="font-size:1.5em">euro_symbol</i>
                             </div>
                         </div>
                         <h3><span class="text-danger">Tranzacții validate:</span></h3>
@@ -120,7 +120,7 @@ $this->params['breadcrumbs'][] = 'Lanțul tau';
                 <i class="material-icons" style="font-size:1.5em">date_range</i> <span style="font-size:1.5em"><?php //$transaction['transaction_created_at'] ? $transaction['transaction_created_at'] : null?></span>
             </div> -->
                                 <div class="col-md-12 text-center">
-                                    <i class="material-icons" style="font-size:1.5em">attach_money</i> <span
+                                    <i class="material-icons" style="font-size:1.5em">euro_symbol</i> <span
                                             style="font-size:1.5em"> <?= $transaction['amount'] ?></span>
                                 </div>
                             </div>
